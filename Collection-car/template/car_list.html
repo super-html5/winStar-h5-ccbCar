@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>超值车品</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../../dist/css/mui.min.css">
+	<link rel="stylesheet" href="../../dist/css/self-css/public.css">
+	<link rel="stylesheet" href="../dist/css/global.css">
+	<link rel="stylesheet" href="../dist/css/car.list.css">
+	<style>
+		.content h5{
+			padding: 1%;
+		}
+	</style>
+</head>
+
+<body>
+<!-- list-tab切换 -->
+<nav class="mui-bar list-tab mui-bar-tab bg-fff">
+    <a id="classify" class="mui-tab-item mui-navigate-right mui-navigate-rightA mui-active "><span class="black">分类</span></a>
+    <a id="price" class="mui-tab-item mui-navigate-right"><span class="black">价格</span></a>
+	<ul id="classifyCon" class="mui-table-view" style="width: 50%;position: absolute;top: 50px;left: 0; text-align: center; border: 2px solid #dddddd; display: none;">
+		<li class="mui-table-view-cell">
+			<a id="sorting" href="###">全部</a>
+		</li>
+		<li class="mui-table-view-cell">
+			<a id="listA" href="###">维修保养</a>
+		</li>
+		<li class="mui-table-view-cell">
+			<a id="listB" href="###">车载用品</a>
+		</li>
+		<li class="mui-table-view-cell">
+			<a id="listC" href="###">美容清洗</a>
+		</li>
+		<li class="mui-table-view-cell">
+			<a id="listD" href="###">汽车服务</a>
+		</li>
+	</ul>
+</nav>
+<!--<div class="content">-->
+	<!--<h5>分类1</h5>-->
+	<!--<h5>分类1</h5>-->
+	<!--<h5>分类1</h5>-->
+	<!--<h5>分类1</h5>-->
+<!--</div>-->
+<div class="mui-content mui-scroll-wrapper top51" id="scroll">
+	<!--列表内容-->
+	<div class="mui-scroll">
+		<ul class="mui-table-view" id="car-list">
+			<!--<li class="mui-table-view-cell mui-media">-->
+				<!--<a href="#"><figure class="mui-pull-left list-img"><img class="imageText-img" src="../../dist/images/pic.png"></figure>-->
+				<!--<div class="mui-media-body">-->
+					<!--<div class="details-title mui-h5 black height38 mui-ellipsis mui-block">2014年05月 众泰T600 2014款 1.5T 手动豪华型</div>-->
+					<!--<div class="details-title margin-top5 orange">-->
+						<!--<span class="font-size14">优惠价：</span><span class="mui-h6 orange margin-top2 height15">￥</span><span class="mui-h4">5894</span>-->
+					<!--</div>-->
+					<!--<div class="details-title mui-h6 blackAC">-->
+						<!--<span>价格：</span><span class="text-del">￥588</span>-->
+					<!--</div>-->
+				<!--</div></a>-->
+			<!--</li>-->
+		</ul>
+	</div>
+</div>
+
+<!--返回顶部-->
+<a id="scrollToTop" class="backTop mui-hidden"></a>
+<script src="../../dist/js/mui.min.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script src="../../dist/js/common.mui.js"></script>
+<script src="../dist/js/jquery.min.js"></script>
+<script src="../dist/js/public.js"></script>
+<script src="../dist/js/car.list.js"></script>
+<script type="text/javascript">
+	mui('.xiala1,.xiala2,.xiala3').on('tap','a',function(){
+		document.location.href=this.href;
+	});
+	mui.init({
+		pullRefresh: {
+			container: "#scroll",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			up: {
+				indicators: false,
+				deceleration: 0,   //加这两行为了解决返回顶部时，出现事件冲突，到时偶发出现不能返回顶部情况
+				height: 50,//可选.默认50.触发上拉加载拖动距离
+				auto: false,//可选,默认false.自动上拉加载一次
+				contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+				contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+				callback:getMoreData
+			}
+		},
+		swipeBack: true //启用右滑关闭功能
+	});
+
+	listData();
+</script>
+</body>
+
+</html>

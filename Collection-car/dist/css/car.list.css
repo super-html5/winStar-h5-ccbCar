@@ -1,0 +1,105 @@
+
+.mui-bar{
+	-webkit-box-shadow: 0 0 1px rgba(0,0,0,0);
+	box-shadow: 0 0 1px rgba(0,0,0,0);
+}
+/* list产品list-tab列表 */
+.list-tab.mui-bar-tab{
+	bottom:auto;
+	border-bottom:1px #006fb9 solid;
+}
+.list-tab .mui-tab-item {
+	position: relative;
+	width: 50%;
+}
+.list-tab .mui-navigate-right:after {
+	right: auto;
+	content: '\e581';
+	color: #000;
+}
+
+
+/* 激活状态降序排序 */
+.list-tab .mui-navigate-rightB span{
+	color: #006fb9;
+}
+.list-tab .mui-active.mui-navigate-rightB:after {
+	color:#006fb9;
+}
+/* 激活状态升序排序 */
+.list-tab .mui-navigate-rightA span{
+	color: #006fb9;
+}
+.list-tab .mui-active.mui-navigate-rightA:after {
+	content: '\e580';
+	color:#006fb9;
+}
+
+
+/* list产品列表 */
+.top51{
+	top:51px;
+}
+.details-title{
+	width: 100%;
+	overflow: hidden;
+	white-space:initial;
+}
+.height38{
+	height:38px;
+}
+.height15{
+	height:15px;
+}
+.line-height19{
+	line-height: 19px;
+}
+
+.text-del{
+	text-decoration: line-through;
+}
+.details-title span{
+	float: left;
+}
+
+/* list产品详情 */
+.details-title sub{
+	bottom: 0;
+	border-radius: 3px;
+	padding:0 3px;
+	border: 1px solid red;
+	color: red;
+}
+.details-title sub b{
+	font-weight: normal;
+}
+.partner-width{
+	padding-right:90px;
+}
+.footer-tel{
+	position: absolute;
+	right: 15px;
+	top: 13px;
+}
+.footer-tel button{
+	width: 85px;
+	padding: 6px 0;
+}
+.mui-icon-phone:before{
+	font-size: 18px;
+}
+.item-img{
+	width: 100%;
+}
+
+/* backTop产品列表 */
+.backTop{
+	position: fixed;
+	z-index: 101;
+	right: 20px;
+	bottom: 60px;
+	width:40px;
+	height:40px;
+	background:url(../../../dist/images/backTop@2x.png) no-repeat;
+	background-size: cover;
+}

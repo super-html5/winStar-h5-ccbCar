@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>车辆详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/self-css/item.css">
+</head>
+
+<body>
+<!-- 底部咨询电话 -->
+<nav class="mui-bar mui-bar-tab">
+    <a id="telphone">
+        <button type="button" class="mui-btn mui-btn-blue mui-btn-block footer-tel"><span class="mui-icon mui-icon mui-icon-phone"></span>商家咨询</button>
+    </a>
+</nav>
+
+<div class="mui-content mui-scroll-wrapper" id="scroll">
+    <div class="mui-scroll font-size15 black8">
+        <!-- 顶部图片展示 -->
+        <div id="item-image" class="mui-slider">
+
+        </div>
+        <!-- 内容信息 -->
+        <ul class="mui-table-view mui-list-unstyled">
+            <li class="mui-table-view-cell">
+                <div class="details-title mui-h5 black" id="item-name">
+                    <b> </b>
+                </div>
+                <div class="details-title margin-top5">
+                    <span class="mui-h3 mui-pull-left orange"><span id="item-price"> </span><span class="mui-h6 orange">万</span></span>
+                    <span class="mui-h6 mui-pull-left margin-top5">(包含过户费)</span>
+                    <span class="mui-h6 mui-pull-right margin-top5">新车含税<span id="item-originPrice"> </span>万</span>
+                </div>
+            </li>
+            <!--<li class="mui-table-view-cell">-->
+                <!--车险套餐<span class="mui-pull-right padding-right24 black4">暂无</span>-->
+            <!--</li>-->
+            <!--<li class="mui-table-view-cell">-->
+                <!--金融套餐<span class="mui-pull-right padding-right24 black4">暂无</span>-->
+            <!--</li>-->
+        </ul>
+        <ul class="mui-table-view margin-top10 margin-bottom10">
+            <li id="is-origin" class="mui-table-view-cell">
+                <!--<div class="mui-input-row mui-checkbox mui-left">-->
+                    <!--<label class="black6" id="item-detail-original">原厂质保</label>-->
+                    <!--<input name="checkbox1" value="Item 1" type="checkbox" id="is-origin-input">-->
+                <!--</div>-->
+            </li>
+        </ul>
+
+        <!-- 基础信息 -->
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a class="mui-navigate-right cyan" href="item_detail.html" id="item-detail-link">基础信息<span class="mui-pull-right padding-right24">查看</span></a>
+            </li>
+
+            <div id="item-basis" class="mui-row bg-fff border-bottom mui-text-center black padding-left10 padding-right10">
+                <div class="mui-col-xs-4 mui-col-sm-4">
+                    <li class="mui-table-view-cell mui-list-unstyled">
+                        <div><span id="item-detail-mile"> </span>万公里</div>
+                        <h6>行驶里程数</h6>
+                    </li>
+                </div>
+                <div class="mui-col-xs-4 mui-col-sm-4">
+                    <li class="mui-table-view-cell mui-list-unstyled">
+                        <div id="item-detail-regDate"> </div>
+                        <h6>首次上牌</h6>
+                    </li>
+                </div>
+                <div class="mui-col-xs-4 mui-col-sm-4">
+                    <li class="mui-table-view-cell mui-list-unstyled">
+                        <div id="item-detail-zone"> </div>
+                        <h6>车辆所在地</h6>
+                    </li>
+                </div>
+                <div class="mui-col-xs-4 mui-col-sm-4">
+                    <li class="mui-table-view-cell mui-list-unstyled">
+                        <div id="item-detail-standard"> </div>
+                        <h6>排放标准</h6>
+                    </li>
+                </div>
+                <div class="mui-col-xs-4 mui-col-sm-4">
+                    <li class="mui-table-view-cell mui-list-unstyled">
+                        <div id="item-detail-transmission"> </div>
+                        <h6>变速箱</h6>
+                    </li>
+                </div>
+                <div class="mui-col-xs-4 mui-col-sm-4">
+                    <li class="mui-table-view-cell mui-list-unstyled">
+                        <div id="item-detail-displacement"> </div>
+                        <h6>排量</h6>
+                    </li>
+                </div>
+            </div>
+
+            <div class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted bg-fff">
+                <div class="mui-scroll details-img mui-h6" id="item-detail-div">
+
+                </div>
+            </div>
+        </ul>
+
+        <!-- 车况说明 -->
+        <ul class="mui-table-view mui-list-unstyled margin-top10">
+            <li class="mui-table-view-cell"><span class="left-line black padding-left5">车况说明</span></li>
+            <div class="mui-table-view-cell font-size14" id="item-description">
+
+            </div>
+
+        </ul>
+
+        <!-- 商家信息 -->
+        <ul class="mui-table-view mui-list-unstyled margin-top10 margin-bottom10">
+            <li class="mui-table-view-cell"><span class="left-line black padding-left5">商家信息</span></li>
+            <li class="mui-table-view-cell">
+                <a class="mui-navigate-right" id="partner-id">
+                    <div class="font-size16 black" id="partner-name"> </div>
+                    <h6><span class="icon-location mui-pull-left"></span><span class="mui-pull-left line-height20 padding-left5" id="partner-address"> </span></h6>
+                </a>
+            </li>
+        </ul>
+
+        <div class="bg-fff mui-text-center padding-top20 padding-bottom20 mui-h6 cyan">
+            联系时，请说明在优驾行easy看到的信息
+        </div>
+    </div>
+</div>
+
+
+<!--返回顶部-->
+<a id="scrollToTop" class="backTop mui-hidden"></a>
+
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/common.util.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script src="../dist/js/common.mui.js"></script>
+<script src="../dist/js/item.js"></script>
+<script type="text/javascript">
+    mui.init({
+        pullRefresh: {
+            container: "#scroll",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+            down: {				
+                height: 50,//可选,默认50.触发下拉刷新拖动距离,
+                auto: true,//可选,默认false.自动下拉刷新一次
+                contentdown: "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+                contentover: "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+                contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+                callback: refreshData //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            }
+        },
+        swipeBack: true //启用右滑关闭功能
+    });
+
+    /** 下拉刷新页面 **/
+    function refreshData() {
+        renderItemBox();
+        this.endPulldownToRefresh(true);
+    }
+</script>
+</body>
+</html>

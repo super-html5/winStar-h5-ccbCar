@@ -1,0 +1,60 @@
+.detailsImg img{
+    width: 100%;
+    height: 180px;
+    display: block;
+}
+.detailsPrice{
+    width: 100%;
+    height: 46px;
+    position: relative;
+}
+.detailsPrice p{
+    width: 66%;
+    line-height: 46px;
+}
+.detailsPrice div{
+   position: absolute;
+    right: 0;
+    top:0;
+    width: 34%;
+    line-height: 22px;
+}
+.detailsPrice a{
+    color: #fff;
+}
+.fl{
+    float: left;
+}
+.hr{
+    width: 26%;
+}
+.detailsTitle p{
+    color:black;
+    font-size: 16px;
+    width: 46%;
+}
+.deImg{
+    width: 100%;
+}
+.detailsTitle{
+   width: 100%;
+   height: 30px;
+}
+#xiding{
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+    width:100%;
+    height: 62px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #fff;
+    z-index: 100;
+}
+#xiding p{
+    line-height: 31px;
+    font-size: 14px;
+}
+#xiding div{
+    line-height: 30px;
+}

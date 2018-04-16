@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../dist/css/mui.picker.min.css">
+    <link rel="stylesheet" href="../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/self-css/details.css">
+</head>
+
+<body>
+
+
+<div id="xiding"></div>
+<div id="scroll" class="mui-content mui-scroll-wrapper"><div class="mui-scroll"></div></div>
+<script src="../dist/js/jquery-3.1.0.min.js"></script>
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/details.js"></script>
+<script>
+    mui('#scroll').scroll();
+    var $xiding = $("#xiding");
+    $(document).on("scroll",function(){
+
+        var scroll = mui('.mui-scroll-wrapper').scroll();
+        $('.mui-scroll-wrapper').on('scroll',function (e) {
+//            console.log(scroll.y);
+        })
+        if(scroll.y<-230){
+            $xiding.stop(true,true).fadeIn();    //#xiding是要显示的DIV
+        }  else {
+            $xiding.stop(true,true).fadeOut();
+        }
+    });
+</script>
+</body>
+
+</html>

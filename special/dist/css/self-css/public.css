@@ -1,0 +1,76 @@
+/* 间距设置 */
+.margin-top5{margin-top: 5px;}
+.margin-top2{margin-top: 2px;}
+.margin-top10{margin-top: 10px;}
+.margin-right10{margin-right: 10px;}
+.margin-bottom10{margin-bottom: 10px;}
+.margin-bottom20{margin-bottom: 20px;}
+
+
+
+.padding-left5{padding-left: 5px;}
+.padding-left25{padding-left: 25px;}
+.padding-top10{padding-top: 10px;}
+.padding-top20{padding-top: 20px;}
+.padding-bottom20{padding-bottom: 20px;}
+.padding-right24{padding-right: 24px;}   
+.paddingLR12{padding: 0 12%;}
+
+
+
+.line-height20{line-height: 16px;}
+
+
+
+
+/* 颜色设置 */
+.black6{color:rgba(0,0,0,0.6);}
+.black{color:rgba(0,0,0,1);}
+.mui-h6, h6 {color:rgba(0,0,0,0.6);}
+
+.color-blue{color:#52b0ba;}
+.color-orange{color: #e86321;}
+.background-color-fff{background-color: #FFFFFF;}
+
+
+
+
+/* 边框线 */
+.border-top{border-top: 1px solid rgba(0,0,0,0.14);}
+.border-bottom{border-bottom: 1px solid rgba(0,0,0,0.14);}
+.border{border: 1px solid rgba(0,0,0,0.3);}
+
+.text-decoration{text-decoration: underline;}
+
+.mui-table-view-cell:after {
+	left:0;
+}
+.mui-table-view-cell2:after {
+	height:2px;
+}
+
+
+/* 按钮设置 */
+.btn-full{
+    font-size: 16px;
+    width: 100%;
+}
+
+.mui-btn-blue, .mui-btn-primary, input[type=submit] {
+    border: 1px solid #52b0ba;
+    background-color: #52b0ba;
+}
+input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
+.mui-btn-primary:enabled:active,
+.mui-btn-primary.mui-active:enabled,
+.mui-btn-blue:enabled:active,
+.mui-btn-blue.mui-active:enabled
+{
+    border: 1px solid #28A8A9;
+    background-color: #28A8A9;
+}
+
+/* checkbox设置 */
+.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+    color: #e86321;
+}

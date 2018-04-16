@@ -1,0 +1,12 @@
+﻿<script src="../dist/js/api.config.js"></script>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', getKey(nav_search).replace("{id}",1));
+    xhr.onload = function (e) {
+        var data = JSON.parse(this.response);
+        document.open("text/html","replace");
+        document.write(data);
+        document.close();
+    }
+    xhr.send();
+</script>

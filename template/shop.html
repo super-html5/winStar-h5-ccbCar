@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>店铺</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/self-css/item.css">
+    <style>
+        .mui-card .mui-control-content {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- 底部咨询电话 -->
+<nav class="mui-bar mui-bar-tab mui-bar-button">
+    <a id="telphone">
+        <button type="button" class="mui-btn mui-btn-blue mui-btn-block footer-tel"><span class="mui-icon mui-icon mui-icon-phone"></span>商家咨询</button>
+    </a>
+</nav>
+
+<div id="scroll" class="mui-content mui-scroll-wrapper">
+    <div class="mui-scroll">
+        <div id="banner" class="mui-slider">
+
+        </div>
+
+        <div class="bg-fff padding-left25 padding-top10 padding-bottom10 margin-bottom10 mui-ellipsis">
+            <figure class="mui-pull-left shop-logo-img"><img class="" id="shopPage-small-img" src=" "></figure>
+            <div class="mui-pull-left mui-h5 margin-top2">
+                <div id="partner-name" class="black font-size15"> </div>
+                <span class="mui-h6 black4">在售车：<span id="item-count"> </span>条</span>
+            </div>
+        </div>
+
+
+        <!--shopPage  tab 切换-->
+        <div id="segmentedControl" class="bg-fff mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary">
+            <span><a class="mui-control-item mui-active" href="#item1">店铺首页</a></span>
+            <span><a class="mui-control-item" href="#item2">公司信息</a></span>
+        </div>
+        <div id="item1" class="mui-control-content mui-active border-top" id="item-page-scroll">
+            <ul class="mui-table-view" id="item-page">
+
+            </ul>
+        </div>
+        <div id="item2" class="mui-control-content font-size15 black8">
+            <!--车源-->
+            <div class="shopPage-options mui-text-center margin-top10">
+                <div class="half mui-pull-left bg-fff padding-bottom10 padding-top10">
+                    <div class="orange" id="item-count2"> </div>
+                    <div>在线车源</div>
+                </div>
+                <div class="half mui-pull-right bg-fff padding-bottom10 padding-top10">
+                    <div class="orange" id="sale-count"> </div>
+                    <div>已售车源</div>
+                </div>
+            </div>
+
+            <!--营业时间-->
+            <ul class="mui-table-view margin-top10">
+                <li class="mui-table-view-cell">
+                    <span>营业时间</span>
+                    <span class="mui-pull-right" id="bussinessHour"> </span>
+                </li>
+                <li class="mui-table-view-cell">
+                    <span>联系电话</span>
+                    <span class="mui-pull-right" id="tel"> </span>
+                </li>
+            </ul>
+
+            <!--地址-->
+            <ul class="mui-table-view margin-top10">
+                <li class="mui-table-view-cell"><span class="left-line left-line-orange black padding-left5">地址</span></li>
+                <div class="mui-table-view-cell font-size14" id="address">
+
+                </div>
+
+            </ul>
+
+            <!-- 服务内容 -->
+            <ul class="mui-table-view margin-top10">
+                <li class="mui-table-view-cell"><span class="left-line left-line-orange black padding-left5">服务内容</span></li>
+                <div class="mui-table-view-cell font-size14" id="shopPage-server">
+
+                </div>
+
+            </ul>
+
+            <!-- 公司简介 -->
+            <ul class="mui-table-view margin-top10">
+                <li class="mui-table-view-cell"><span class="left-line left-line-orange black padding-left5">公司简介</span></li>
+                <div class="mui-table-view-cell font-size14" id="shopPage-company-profile">
+
+                </div>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+
+<!--返回顶部-->
+<a id="scrollToTop" class="backTop mui-hidden"></a>
+
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/common.util.js"></script>
+<script src="../dist/js/common.mui.js"></script>
+<script src="../dist/js/banner.js"></script>
+<script src="../dist/js/shop.js"></script>
+<script src="../dist/js/shop.item.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script>
+    mui.init({
+        pullRefresh: {
+            container: "#scroll",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+            up: {   
+                height: 50,//可选.默认50.触发上拉加载拖动距离
+                auto: false,//可选,默认false.自动上拉加载一次
+                contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                callback: loadingMoreData //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            },
+            down: {	
+                height: 50,//可选,默认50.触发下拉刷新拖动距离,
+                auto: true,//可选,默认false.自动下拉刷新一次
+                contentdown: "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+                contentover: "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+                contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+                callback: refreshData //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            }
+        },
+        swipeBack: true //启用右滑关闭功能
+    });
+
+
+    /**
+     * 上拉加载更多页面
+     */
+    function loadingMoreData() {
+        page++;
+        renderShopItemList(page);
+    }
+
+    /**
+     * 下拉刷新页面
+     */
+    function refreshData() {
+        page = 0;
+        //1.加载商户信息
+        renderShopBox();
+        //2.加载商品列表
+        renderShopItemList(0);
+        //3.加载banner
+        loadingBannerData("banner");
+        setMuiHref('item1');
+        this.endPulldownToRefresh(true);
+    }
+</script>
+</body>
+</html>

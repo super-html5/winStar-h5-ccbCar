@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/global.css">
+    <link rel="stylesheet" href="../dist/css/car.list.css">
+</head>
+
+<body>
+<div class="mui-content mui-scroll-wrapper" id="scroll">
+    <div class="mui-scroll font-size15 black8">
+        <!-- 顶部图片展示 -->
+        <a class="mui-block" id="banner" href="#"></a>
+        <!-- 内容信息 -->
+        <ul class="mui-table-view margin-bottom10" id="ul-contentA">
+            <!--<li class="mui-table-view-cell">-->
+                <!--<div class="details-title mui-h5 black" id="item-name"> </div>-->
+                <!--<div class="details-title margin-top10 orange">-->
+                    <!--<span class="mui-h6 orange margin-top2 height15">￥</span><span id="detail-price" class="mui-h3 margin-right10"> </span>-->
+                    <!--<sub><b id="date">6.30日</b>前有效</sub>-->
+                <!--</div>-->
+                <!--<div class="details-title mui-h6 blackAC">-->
+                    <!--<span>价格：</span><span id="detail-del-Price" class="text-del"> </span>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+
+        <!-- 商家信息 -->
+        <ul class="mui-table-view margin-bottom10" id="ul-contentB">
+            <!--<li class="mui-table-view-cell">-->
+                <!--<div class="partner-width">-->
+                    <!--<div class="font-size16 black" id="partner-name"> </div>-->
+                    <!--<h6><span id="partner-address"> </span></h6>-->
+                <!--</div>-->
+                <!--<div class="footer-tel">-->
+                    <!--<a id="telphone"><button type="button" class="mui-btn mui-btn-blue" id="phoneBtn"><span class="mui-icon mui-icon mui-icon-phone"></span>电话咨询</button></a>-->
+                <!--</div>-->
+            <!--</li>-->
+        </ul>
+        <ul class="mui-table-view" id="detail-content">
+
+        </ul>
+    </div>
+</div>
+
+
+<!--返回顶部-->
+<a id="scrollToTop" class="backTop mui-hidden"></a>
+
+<script src="../../dist/js/mui.min.js"></script>
+<script src="../../dist/js/common.util.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script src="../../dist/js/common.mui.js"></script>
+<script src="../dist/js/jquery.min.js"></script>
+<script src="../dist/js/public.js"></script>
+<script src="../dist/js/list.detail.js"></script>
+<script type="text/javascript" charset="utf-8">
+
+    detailDate();
+
+
+    //    mui.init({
+//        pullRefresh: {
+//            container: "#scroll",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+//            down: {
+//                height: 50,//可选,默认50.触发下拉刷新拖动距离,
+//                auto: true,//可选,默认false.自动下拉刷新一次
+//                //contentdown: "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+//                //contentover: "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+//                //contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+//                callback: refreshData //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+//            }
+//        },
+//        swipeBack: true //启用右滑关闭功能
+//    });
+//    function refreshData() {
+//        detailDate();
+//        this.endPulldownToRefresh(true);
+//    }
+
+</script>
+</body>
+
+</html>

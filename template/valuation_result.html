@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>爱车估值</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/self-css/valuationSesult.css">
+</head>
+<body>
+<div class="mui-content">
+    <div class="mui-scroll">
+        <ul class="mui-table-view margin-top10 margin-bottom10">
+            <li class="mui-table-view-cell item-margin mui-media">
+                <a class="margin-top10 bg-fff margin-bottom10" href="javascript:;">
+                    <figure class="mui-pull-left list-img"><img class="imageText-img" id="valuaR-Pic" src=" "></figure>
+                    <div class="mui-media-body">
+                        <div class="details-title mui-h5 margin-top5">
+                            <b class="black height38 mui-ellipsis mui-block" id="title"> </b>
+                        </div>
+                        <div class="details-title padding-top10">
+                            <span id="date" class="mui-h6 mui-pull-left"> </span>
+                            <span class="mui-h6 mui-pull-left"><span id="kilometre"> </span>万公里</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+
+        <div class="valuaR-status bg-fff">
+            <!-- valuationResult-tab切换 -->
+            <div id="segmentedControl"
+                 class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary mui-text-center">
+                <span><a class="mui-control-item mui-active" href="#item1">车况优秀</a></span>
+                <span><a class="mui-control-item" href="#item2">车况良好</a></span>
+                <span><a class="mui-control-item" href="#item3">车况一般</a></span>
+            </div>
+            <div class="valuaR-quote border-bottom border-top">
+                <div id="item1" class="mui-control-content mui-active">
+                    <div class="quote">
+                        <div>参考商家报价</div>
+                        <div id="reference-quote-excellent">00.0万</div>
+                    </div>
+
+                    <div style="padding-left: 15px; padding-right: 15px">
+                        <span style="font-weight: 900;font-size: 18px;">车况说明 : </span><br><br>
+
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">外观</span><br>外观无可见瑕疵和色差
+                        </p>
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">内饰</span><br>内饰干净整洁无明显可见磨损；
+                            无异味
+                        </p>
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">工况</span><br>2年且4万公里以内；<br>
+                            动力系统、机械部位运行正常且无维修；<br>
+                            按时保养且记录完整；电子系统无任何故障
+                        </p>
+                    </div>
+
+
+                </div>
+                <div id="item2" class="mui-control-content">
+                    <div class="quote">
+                        <div>参考商家报价</div>
+                        <div id="reference-quote-good">00.0万</div>
+                    </div>
+                    <div style="padding-left: 15px; padding-right: 15px">
+                        <span style="font-weight: 900;font-size: 18px;">车况说明 : </span><br><br>
+
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">外观</span><br>外观无色差，有个别瑕疵
+                        </p>
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">内饰</span><br>内饰有个别部件存在轻微磨损；
+                            无破损，无异味
+                        </p>
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">工况</span><br>20万公里以内；动力系统运行正常且无维修；<br>
+                            机械部位运行正常，有部分维修或更换记录；<br>
+                            电子设备及模块使用正常
+                        </p>
+                    </div>
+                </div>
+                <div id="item3" class="mui-control-content">
+                    <div class="quote">
+                        <div>参考商家报价</div>
+                        <div id="reference-quote-ordinary">00.0万</div>
+                    </div>
+                    <div style="padding-left: 15px; padding-right: 15px">
+                        <span style="font-weight: 900;font-size: 18px;">车况说明 : </span><br><br>
+
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">外观</span><br>外观有轻微色差，有少量瑕疵
+                        </p>
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">内饰</span><br>内饰有少量部件存在磨损，个别严重破损；<br>
+                            通风后不存在明显异味
+                        </p>
+                        <p>
+                            <span style="font-weight: 900;font-size: 18px;">工况</span><br>动力系统正常且无维修；<br>
+                            机械部位运行存在异常，有部分维修或更换记录
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="valuaR-reference-value mui-text-center font-size15">
+                <span>新车参考价：</span>
+                <span id="valuaR-price" class="mui-h4 orange"> </span>
+                <span>万元</span>
+            </div>
+        </div>
+        <h6 class="mui-text-center padding-top10 padding-bottom20 cyan">估值价格仅供参考，买卖车辆请以实际价格为准</h6>
+        <div class="paddingLR12 margin-top10 margin-bottom20">
+            <button id="valuaR-buy-Btn" type="button" class="mui-btn mui-btn-blue btn-full">
+                返回车主权益页
+            </button>
+        </div>
+    </div>
+</div>
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/common.util.js"></script>
+<script src="../dist/js/common.mui.js"></script>
+<script>
+    var obj = JSON.parse(getQueryString("obj"));
+    document.getElementById("valuaR-Pic").setAttribute("src", obj.carLogoUrl);
+    document.getElementById("title").innerHTML = obj.title;
+    document.getElementById("date").innerHTML = obj.regDate;
+    document.getElementById("kilometre").innerHTML = obj.mile;
+    document.getElementById("reference-quote-excellent").innerHTML = obj.highPrice + '万元';
+    document.getElementById("reference-quote-good").innerHTML = obj.goodPrice + '万元';
+    document.getElementById("reference-quote-ordinary").innerHTML = obj.lowPrice + '万元';
+    document.getElementById("valuaR-price").innerHTML = obj.price;
+    document.getElementById("valuaR-buy-Btn").onclick = function () {
+        history.go(-2);
+    }
+</script>
+</body>
+</html>

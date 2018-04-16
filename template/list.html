@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>我要买车</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../dist/css/mui.min.css">
+	<link rel="stylesheet" href="../dist/css/mui.indexedlist.css">
+	<link rel="stylesheet" href="../dist/css/self-css/public.css">
+	<link rel="stylesheet" href="../dist/css/self-css/item.css">
+	<link rel="stylesheet" href="../dist/css/self-css/select.model.css">
+</head>
+
+<body>
+<!-- 搜索 -->
+<header class="mui-bar mui-bar-nav item-search">
+	<div class="mui-input-row mui-search">
+		<input type="search" class="mui-input-clear" placeholder="">
+	</div>
+	<button type="button">搜索</button>
+</header>
+
+<!-- list-tab切换 -->
+<nav class="mui-bar list-tab mui-bar-tab bg-fff">
+    <a id="sorting" class="mui-tab-item mui-navigate-right">
+        <span class="mui-tab-label black">排序</span>
+    </a>
+    <a id="brand" class="mui-tab-item mui-navigate-right">
+        <span class="mui-tab-label black">品牌</span>
+    </a>
+    <a id="price" class="mui-tab-item mui-navigate-right">
+        <span class="mui-tab-label black">价格</span>
+    </a>
+    <a id="displacement" class="mui-tab-item mui-navigate-right">
+        <span class="mui-tab-label black">排量</span>
+    </a>
+</nav>
+
+<!-- 排序 -->
+<div id="sorting-content" class="show-cell bg-fff font-size15 mui-hidden">
+	<ul class="mui-table-view mui-table-view-radio">
+		<li class="mui-table-view-cell">
+			<b class="mui-navigate-right">默认排序</b>
+		</li>
+		<li class="mui-table-view-cell">
+			<b class="mui-navigate-right" data-value="price-desc">价格最高</b>
+		</li>
+		<li class="mui-table-view-cell">
+			<b class="mui-navigate-right" data-value="price-asc">价格最低</b>
+		</li>
+		<li class="mui-table-view-cell">
+			<b class="mui-navigate-right" data-value="regDate-desc">车龄最短</b>
+		</li>
+		<li class="mui-table-view-cell">
+			<b class="mui-navigate-right" data-value="mile-asc">里程最少</b>
+		</li>
+	</ul>
+</div>
+
+<!-- 品牌 -->
+<div id="brand-content" class="show-cell show-cell-brand bg-fff font-size15 visibi-hidden">
+
+	<div id='list' class="mui-indexed-list">
+		<div class="mui-indexed-list-bar">
+			<a>A</a>
+			<a>B</a>
+			<a>C</a>
+			<a>D</a>
+			<a>E</a>
+			<a>F</a>
+			<a>G</a>
+			<a>H</a>
+			<a>I</a>
+			<a>J</a>
+			<a>K</a>
+			<a>L</a>
+			<a>M</a>
+			<a>N</a>
+			<a>O</a>
+			<a>P</a>
+			<a>Q</a>
+			<a>R</a>
+			<a>S</a>
+			<a>T</a>
+			<a>U</a>
+			<a>V</a>
+			<a>W</a>
+			<a>X</a>
+			<a>Y</a>
+			<a>Z</a>
+		</div>
+		<div class="mui-indexed-list-alert"></div>
+		<div class="mui-indexed-list-inner">
+			<div class="mui-indexed-list-empty-alert">没有数据</div>
+			<div class="mui-block default-list brand-content-sale"><span>不限</span></div>
+			<ul class="mui-table-view" id="brand-list">
+				<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+				<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item"><img src="../dist/images/brand.png" class="mui-pull-left" width="28" height="28" /><span>阿克苏机场</span></li>
+				<li data-value="BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item">阿拉山口机场</li>
+				-->
+			</ul>
+		</div>
+	</div>
+	<aside id="segmentedControlContents" class="mui-row mui-fullscreen bg-fff mui-hidden" style="border-left: 1px solid #c8c7cc;float: right;">
+
+		<div id="scroll-series" class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view" id="series-list">
+
+				</ul>
+			</div>
+
+		</div>
+	</aside>
+
+</div>
+
+<!-- 价格 -->
+<div id="price-content" class="show-cell price-content bg-fff mui-hidden">
+	<ul class="mui-table-view mui-table-view-radio mui-grid-view">
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 mui-selected">
+        	<button type="button" class="mui-btn" data-value="">不限</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="0-5">5W以下</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="5-10">5-10万</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="10-15">10-15万</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="15-20">15-20万</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="20-30">20-30万</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="30-40">30-40万</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="40-50">40-50万</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="50-">50万以上</button>
+        </li>
+    </ul>
+</div>
+
+<!-- 排量 -->
+<div id="displacement-content" class="show-cell price-content bg-fff mui-hidden">
+	<ul class="mui-table-view mui-table-view-radio mui-grid-view">
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4 mui-selected">
+        	<button type="button" class="mui-btn" data-value="">不限</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="0-1.0">1.0L及以下</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="1.1-1.6">1.1L-1.6L</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="1.7-2.0">1.7L-2.0L</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="2.1-2.5">2.1L-2.5L</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="2.6-3.0">2.6L-3.0L</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="3.1-3.5">3.1L-3.5L</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="3.6-4.0">3.6L-4.0L</button>
+        </li>
+        <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+        	<button type="button" class="mui-btn" data-value="4.0-">4.0L以上</button>
+        </li>
+    </ul>
+
+</div>
+
+
+<div class="mui-content" >
+
+	<!--<div id="item-scroll">-->
+		<div  class="mui-scroll-wrapper top88"  id="scroll">
+			<div class="mui-scroll">
+				<ul class="mui-table-view" id="content-list">
+
+				</ul>
+			</div>
+		</div>
+	<!--</div>-->
+</div>
+
+<!--返回顶部-->
+<a id="scrollToTop" class="backTop mui-hidden"></a>
+
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/mui.indexedlist.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script src="../dist/js/common.mui.js"></script>
+<script src="../dist/js/list.js"></script>
+<script src="../dist/js/brand.js"></script>
+<script type="text/javascript">
+	mui.init({
+		pullRefresh: {
+			container: "#scroll",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			up: {
+				indicators: false,
+				bounce: false,
+				deceleration: 0,   //加这两行为了解决返回顶部时，出现事件冲突，到时偶发出现不能返回顶部情况
+
+				height: 50,//可选.默认50.触发上拉加载拖动距离
+				auto: false,//可选,默认false.自动上拉加载一次
+				contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+				contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+				callback:getMoreData
+			}
+		},
+		swipeBack: true //启用右滑关闭功能
+	});
+
+	initData();//这里存储下拉数据
+
+
+</script>
+</body>
+
+</html>

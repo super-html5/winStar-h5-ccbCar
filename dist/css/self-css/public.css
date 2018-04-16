@@ -1,0 +1,121 @@
+p{
+    font-size: 15px;
+    text-indent: 25px;
+    color:rgba(0,0,0,0.6);
+}
+pre{
+    white-space: pre-wrap;
+}
+/* 字体设置 */
+body, .font-size16{font-size: 16px;}
+.font-size15, .mui-btn, button, input[type=button], input[type=reset], input[type=submit]{font-size:15px;}
+.font-size14{font-size:14px;}
+
+/* 间距设置 */
+.margin-top5{margin-top: 5px;}
+.margin-top2{margin-top: 2px;}
+.margin-top10{margin-top: 10px;}
+.margin-top25{margin-top: 25px;}
+.margin-right10{margin-right: 10px;}
+.margin-bottom10{margin-bottom: 10px;}
+.margin-bottom20{margin-bottom: 20px;}
+
+.padding-top10{padding-top: 10px;}
+.padding-top20{padding-top: 20px;}
+
+.padding-right10{padding-right: 10px;}
+.padding-right24{padding-right: 24px;}
+
+.padding-bottom10{padding-bottom: 10px;}
+.padding-bottom20{padding-bottom: 20px;}
+
+.padding-left5{padding-left: 5px;}
+.padding-left10{padding-left: 10px;}
+.padding-left25{padding-left: 25px;}
+
+.paddingLR12{padding: 0 12%;}
+.padding-top-bottom{padding:20px 0 40px;}
+@media all and (max-device-height:568px ){
+   .mui-text-center.padding-top-bottom{padding: 5px 0 10px;}
+}
+
+.line-height20{line-height: 16px;}
+
+
+/* 颜色设置 */
+.black{color:rgba(0,0,0,1);}
+.black8, .mui-h6, h6{color:rgba(0,0,0,0.8);}
+.black6{color:rgba(0,0,0,0.6);}
+.black4{color:rgba(0,0,0,0.4);}
+.blackAC{color: #acacac;}
+.blue{color:#006fb9;}
+.cyan{color:#52b0ba;}
+.orange{color: #f08519;}
+
+.bg-fff{background-color: #FFFFFF;}
+
+
+/* 边框线 */
+.border-top{border-top: 1px solid rgba(0,0,0,0.14);}
+.border-bottom{border-bottom: 1px solid rgba(0,0,0,0.14);}
+.border{border: 1px solid rgba(0,0,0,0.2);}
+
+.text-decoration{text-decoration: underline;}
+.mui-table-view-cell:after, .mui-input-group .mui-input-row:after {left:0; }
+.mui-table-view-cell2:after {
+    height:2px;
+}
+.mui-table-view:before,
+.mui-table-view:after,
+.mui-input-group:after,
+.mui-input-group .mui-input-row:last-child:after{
+    height:0;
+}
+
+/* 按钮设置 */
+.mui-btn, button, input[type=button], input[type=reset], input[type=submit]{
+    border-radius: 6px;
+}
+.btn-full{
+    font-size: 16px;
+    width: 100%;
+}
+.half{
+    width: 49.8%;
+}
+.mui-btn-blue, .mui-btn-primary, input[type=submit],
+input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
+.mui-btn-primary:enabled:active, .mui-btn-primary.mui-active:enabled,
+.mui-btn-blue:enabled:active, .mui-btn-blue.mui-active:enabled
+{
+    border: 1px solid #52b0ba;
+    background-color: #52b0ba;
+}
+.mui-input-row label~input, .mui-input-row label~select, .mui-input-row label~textarea{
+    font-size: 14px;
+}
+
+/* checkbox设置 */
+/*.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {*/
+    /*color: #e86321;*/
+/*}*/
+
+/* 按下去掉背景色 */
+#warp-box .mui-table-view-cell.mui-active {
+    background-color:#fff;
+}
+
+/* list产品列表图 */
+figure.list-img{
+    margin:6px 10px 0 0;
+    width: 110px;
+    height:73px;
+    vertical-align: middle;
+    text-align: center;
+    background: url(../../images/list-default@2x.png) center no-repeat;
+    background-size: contain;
+}
+.imageText-img{
+    max-width: 110px;
+    max-height:73px;
+}

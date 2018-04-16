@@ -1,0 +1,13 @@
+{
+	"template/index.html": {
+		"href": "template/index.html",
+		"resources": [
+			"dist/css/mui.min.css",
+			"dist/js/mui.min.js",
+			"dist/fonts/mui.ttf",
+			"dist/css/self-css/car.css"
+		],
+		"refer": [],
+		"priority": 0
+	}
+}

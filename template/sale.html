@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>我要卖车</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../dist/css/mui.picker.min.css">
+    <link rel="stylesheet" href="../dist/css/mui.indexedlist.css">
+    <link rel="stylesheet" href="../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/self-css/sale.css">
+    <link rel="stylesheet" href="../dist/css/self-css/select.model.css">
+</head>
+
+<body>
+<!-- 品牌 -->
+<div id="brand-content" class="show-cell show-cell-city bg-fff font-size15 visibi-hidden">
+    <div id='brand-index-list' class="mui-indexed-list">
+        <div class="mui-indexed-list-bar">
+            <a>A</a>
+            <a>B</a>
+            <a>C</a>
+            <a>D</a>
+            <a>E</a>
+            <a>F</a>
+            <a>G</a>
+            <a>H</a>
+            <a>I</a>
+            <a>J</a>
+            <a>K</a>
+            <a>L</a>
+            <a>M</a>
+            <a>N</a>
+            <a>O</a>
+            <a>P</a>
+            <a>Q</a>
+            <a>R</a>
+            <a>S</a>
+            <a>T</a>
+            <a>U</a>
+            <a>V</a>
+            <a>W</a>
+            <a>X</a>
+            <a>Y</a>
+            <a>Z</a>
+        </div>
+        <div class="mui-indexed-list-alert"></div>
+        <div class="mui-indexed-list-inner">
+            <div class="mui-indexed-list-empty-alert">没有数据</div>
+            <ul class="mui-table-view" id="brand-list">
+            </ul>
+        </div>
+    </div>
+    <aside id="segmentedControlContents" class="mui-row mui-fullscreen bg-fff mui-hidden" style="border-left: 1px solid #c8c7cc;float: right;">
+        <div id='scroll-series' class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view" id="series-list">
+
+                </ul>
+            </div>
+
+        </div>
+    </aside>
+
+</div>
+
+<div class="mui-content mui-scroll-wrapper black8">
+    <div class="mui-scroll">
+        <!-- 顶部图片展示 -->
+        <div id="banner" class="mui-slider margin-bottom10">
+
+        </div>
+        <!-- 表单验证 -->
+        <ul class="mui-table-view main-content">
+            <li class="mui-table-view-cell" id="select-motorcycle-type">
+                <a class="mui-navigate-right">车型<span class="mui-pull-right padding-right24 mui-h5 blackAC" id="modelResult">请选择</span></a>
+            </li>
+            <li class="mui-table-view-cell" id='showCityPicker'>
+                <a class="mui-navigate-right">车辆注册地<span class="mui-pull-right padding-right24 mui-h5 blackAC" id="cityResult">请选择</span></a>
+            </li>
+            <li class="mui-table-view-cell" id="showDataPicker" data-options='{"type":"month","beginYear":1990,"endYear":2017}'>
+                <a class="mui-navigate-right">首次上牌日期<span class="mui-pull-right padding-right24 mui-h5 blackAC" id="dataResult">请选择</span></a>
+            </li>
+            <li class="mui-table-view-cell mui-input-row">
+                <label class="mui-pull-left">行驶里程</label>
+                <input type="number" id="mile" name="mile" class="mui-input-clear" placeholder="最多两位小数" autocomplete="off" oninput="if(value.length>8)value=value.slice(0,8)"
+                       onkeyup="CheckInputIntFloat(this);">
+                <span class="mui-pull-right mui-h5 unit">万公里</span>
+            </li>
+            <li class="mui-table-view-cell mui-input-row">
+                <label class="mui-pull-left">期望售价</label>
+                <input type="number" id="expectPrice" name="expectPrice" class="mui-input-clear" placeholder="最多两位小数" autocomplete="off" oninput="if(value.length>8)value=value.slice(0,8)"
+                       onkeyup="CheckInputIntFloat(this);">
+                <span class="mui-pull-right mui-h5 unit">万元</span>
+            </li>
+            <li class="mui-table-view-cell mui-input-row code">
+                <label>验证码</label>
+                <input type="text" id="verifyCode" class="mui-pull-left tel-input mui-input-clear" name="verifyCode" maxlength="4" placeholder="请输入验证码" autocomplete="off">
+                <img id="getCodeImg" class="getCodeImg" src="" alt="" />
+            </li>
+            <li class="mui-table-view-cell mui-input-row code">
+                <label class="mui-pull-left">手机号码</label>
+                <input type="tel" id="telephone" name="telephone" class="mui-pull-left tel-input mui-input-clear" maxlength="11" placeholder="请输入手机号" autocomplete="off">
+                <small id="getCode" class="getCode blue">获取验证码</small>
+                <!--<small id="isTime" class="getCode text-secondary"></small>-->
+            </li>
+            <li class="mui-table-view-cell mui-input-row">
+                <label class="mui-pull-left">验证码</label>
+                <input type="text" id="validCode" name="validCode" class="mui-pull-left tel-input mui-input-clear" maxlength="6" placeholder="请输入手机验证码" autocomplete="off">
+            </li>
+        </ul>
+
+        <div class="tel4 mui-text-center padding-top-bottom mui-h6">
+            <a href="tel:4008012122" style="display: block;"><h5 class="black8"><span class="mui-icon mui-icon mui-icon-phone cyan"></span>咨询热线：<span
+                    class="cyan text-decoration">4008012122</span></h5></a>
+            评估师免费上门估价，更精确
+        </div>
+        <div class="paddingLR12 margin-bottom20">
+            <button id="confirmBtn" type="button" class="mui-btn mui-btn-blue btn-full">确定</button>
+        </div>
+    </div>
+</div>
+
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/mui.indexedlist.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script src="../dist/js/common.mui.js"></script>
+<script src="../dist/js/banner.js"></script>
+<script src="../dist/js/mui.poppicker.js"></script>
+<script src="../dist/js/mui.picker.min.js"></script>
+<script src="../dist/js/select.model.js"></script>
+<script src="../dist/js/index.js"></script>
+<script type="text/javascript">
+    loadingBannerData("banner");
+    renderBrandList();
+</script>
+</body>
+
+</html>

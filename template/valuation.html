@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>爱车估值</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="../dist/css/mui.min.css">
+    <link rel="stylesheet" href="../dist/css/mui.picker.min.css">
+    <link rel="stylesheet" href="../dist/css/mui.indexedlist.css">
+    <link rel="stylesheet" href="../dist/css/self-css/public.css">
+    <link rel="stylesheet" href="../dist/css/self-css/sale.css">
+    <link rel="stylesheet" href="../dist/css/self-css/select.model.css">
+</head>
+<body>
+
+
+<!-- 品牌 -->
+<div id="brand-content" class="show-cell show-cell-city bg-fff font-size15 visibi-hidden">
+    <div id='brand-index-list' class="mui-indexed-list">
+        <div class="mui-indexed-list-bar">
+            <a>A</a>
+            <a>B</a>
+            <a>C</a>
+            <a>D</a>
+            <a>E</a>
+            <a>F</a>
+            <a>G</a>
+            <a>H</a>
+            <a>I</a>
+            <a>J</a>
+            <a>K</a>
+            <a>L</a>
+            <a>M</a>
+            <a>N</a>
+            <a>O</a>
+            <a>P</a>
+            <a>Q</a>
+            <a>R</a>
+            <a>S</a>
+            <a>T</a>
+            <a>U</a>
+            <a>V</a>
+            <a>W</a>
+            <a>X</a>
+            <a>Y</a>
+            <a>Z</a>
+        </div>
+        <div class="mui-indexed-list-alert"></div>
+        <div class="mui-indexed-list-inner">
+            <div class="mui-indexed-list-empty-alert">没有数据</div>
+            <ul class="mui-table-view" id="brand-list">
+            </ul>
+        </div>
+    </div>
+    <aside id="segmentedControlContents" class="mui-row mui-fullscreen bg-fff mui-hidden"
+           style="border-left: 1px solid #c8c7cc;float: right;">
+        <div id='scroll-series' class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="mui-table-view" id="series-list">
+
+                </ul>
+            </div>
+
+        </div>
+    </aside>
+
+</div>
+
+<div id="canvasContent" class="mui-content mui-scroll-wrapper black8">
+    <div class="mui-scroll">
+        <div class="mui-text-center mui-col-sm-8 mui-col-xs-8 size-style bg-blue">爱车估值</div>
+        <ul class="mui-table-view mui-col-sm-10 mui-col-xs-10 main-content">
+            <li class="mui-table-view-cell" id="select-motorcycle-type">
+                <a class="mui-navigate-right">车型<span id="modelResult"
+                                                      class="mui-pull-right padding-right24 mui-h5 blackAC">请选择</span></a>
+            </li>
+            <li class="mui-table-view-cell" id='showCityPicker'>
+                <a class="mui-navigate-right">车辆注册地<span id='cityResult'
+                                                         class="mui-pull-right padding-right24 mui-h5 blackAC">请选择</span></a>
+            </li>
+            <li class="mui-table-view-cell" id="showDataPicker"
+                data-options='{"type":"month","beginYear":1990,"endYear":2017}'>
+                <a class="mui-navigate-right">首次上牌日期<span id='dataResult'
+                                                          class="mui-pull-right padding-right24 mui-h5 blackAC">请选择</span></a>
+            </li>
+            <li class="mui-table-view-cell border-bottom mui-input-row">
+                <label class="mui-pull-left">行驶里程</label>
+                <input type="number" class="mui-input-clear" id="mile" placeholder="最多两位小数" autocomplete="off"
+                       oninput="if(value.length>8)value=value.slice(0,8)" onkeyup="CheckInputIntFloat(this);">
+                <span class="mui-pull-right mui-h5 unit">万公里</span>
+            </li>
+        </ul>
+        <div class="mui-text-center mui-col-sm-7 mui-col-xs-7 size-style bg-yellow">开始评价</div>
+
+        <!--<div class="tel4 mui-text-center padding-top-bottom margin-top25 mui-h6">-->
+        <!--<a href="tel:4008012122" style="display: block;"><h5 class="black8"><span class="mui-icon mui-icon mui-icon-phone cyan"></span>咨询热线：<span class="cyan text-decoration">4008012122</span></h5></a>-->
+        <!--车300提供估价技术支持-->
+        <!--</div>-->
+    </div>
+</div>
+<script src="../dist/js/mui.min.js"></script>
+<script src="../dist/js/mui.indexedlist.js"></script>
+<script src="../dist/js/api.config.js"></script>
+<script src="../dist/js/common.mui.js"></script>
+<script src="../dist/js/common.util.js"></script>
+<script src="../dist/js/mui.picker.min.js"></script>
+<script src="../dist/js/secondaryLinkage.js"></script>
+<script src="../dist/js/select.model.js"></script>
+<script src="../dist/js/valuation.js"></script>
+</body>
+</html>
