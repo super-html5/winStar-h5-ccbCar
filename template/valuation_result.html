@@ -13,17 +13,12 @@
 <body>
 <div class="mui-content">
     <div class="mui-scroll">
-        <ul class="mui-table-view margin-top10 margin-bottom10">
+        <ul class="mui-table-view margin-top10 margin-bottom5">
             <li class="mui-table-view-cell item-margin mui-media">
-                <a class="margin-top10 bg-fff margin-bottom10" href="javascript:;">
-                    <figure class="mui-pull-left list-img"><img class="imageText-img" id="valuaR-Pic" src=" "></figure>
+                <a class="margin-top10 bg-fff margin-bottom5" href="javascript:;">
                     <div class="mui-media-body">
-                        <div class="details-title mui-h5 margin-top5">
-                            <b class="black height38 mui-ellipsis mui-block" id="title"> </b>
-                        </div>
-                        <div class="details-title padding-top10">
-                            <span id="date" class="mui-h6 mui-pull-left"> </span>
-                            <span class="mui-h6 mui-pull-left"><span id="kilometre"> </span>万公里</span>
+                        <div class="details-title mui-h5">
+                            <b class="black mui-ellipsis mui-block" id="title"> </b>
                         </div>
                     </div>
                 </a>
@@ -31,116 +26,191 @@
         </ul>
 
 
-        <div class="valuaR-status bg-fff">
-            <!-- valuationResult-tab切换 -->
-            <div id="segmentedControl"
-                 class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary mui-text-center">
-                <span><a class="mui-control-item mui-active" href="#item1">车况优秀</a></span>
-                <span><a class="mui-control-item" href="#item2">车况良好</a></span>
-                <span><a class="mui-control-item" href="#item3">车况一般</a></span>
+        <div class="mui-row bg-fff margin-bottom10 mui-text-center black padding-left10 padding-right10">
+            <div class="mui-col-xs-4 mui-col-sm-4">
+                <li class="mui-table-view-cell mui-list-unstyled">
+                    <div id="_zone"></div>
+                    <h6 class="black4">车牌所在地</h6>
+                </li>
             </div>
-            <div class="valuaR-quote border-bottom border-top">
+            <div class="mui-col-xs-4 mui-col-sm-4">
+                <li class="mui-table-view-cell mui-list-unstyled">
+                    <div id="date"></div>
+                    <h6 class="black4">首次上牌</h6>
+                </li>
+            </div>
+            <div class="mui-col-xs-4 mui-col-sm-4">
+                <li class="mui-table-view-cell mui-list-unstyled">
+                    <div><span id="kilometre"> </span>万公里</div>
+                    <h6 class="black4">行驶里程</h6>
+                </li>
+            </div>
+        </div>
+
+
+        <div class="mui-row bg-fff border-bottom mui-text-center black padding-left10 padding-right10">
+            <div class="mui-col-xs-4 mui-col-sm-4 border-right">
+                <li class="mui-table-view-cell mui-list-unstyled">
+                    <div id="tab1" class="tab-active">估值数据</div>
+                </li>
+            </div>
+            <div class="mui-col-xs-4 mui-col-sm-4 border-right">
+                <li class="mui-table-view-cell mui-list-unstyled">
+                    <div id="tab2">价格走势</div>
+                </li>
+            </div>
+            <div class="mui-col-xs-4 mui-col-sm-4">
+                <li class="mui-table-view-cell mui-list-unstyled">
+                    <div id="tab3">车辆详情</div>
+                </li>
+            </div>
+        </div>
+
+
+        <div class="bg-fff">
+            <div id="tab1-con">
+                <div class="mui-text-center padding-top20 padding-bottom20">
+                    <div class="margin-bottom10">车况与估值</div>
+                    <hr style="height: 5px;width:30px; background-color: #007aff;border: none;">
+                    <div class="black4 font-size14">新车指导价 : <span id="valuaR-price"></span> <span>万元</span>
+                    </div>
+                </div>
+                <div class="mui-segmented-control" style="width: 70%;margin: auto">
+                    <a class="mui-control-item mui-active" href="#item1">车况优秀</a>
+                    <a class="mui-control-item" href="#item2">车况良好</a>
+                    <a class="mui-control-item" href="#item3">车况一般</a>
+                </div>
                 <div id="item1" class="mui-control-content mui-active">
-                    <div class="quote">
-                        <div>参考商家报价</div>
-                        <div id="reference-quote-excellent">00.0万</div>
+                    <div class="mui-text-center padding-bottom20">
+                        <div class="margin-top25"><span
+                                style="background-color: #007aff;color: #FFFFFF;padding:5px 15px 5px 15px;">车辆估值(万元)</span>
+                        </div>
+                        <div class="margin-top10 font-size18" style="color: #007aff;font-weight: 700"
+                             id="reference-quote-excellent"></div>
                     </div>
 
-                    <div style="padding-left: 15px; padding-right: 15px">
-                        <span style="font-weight: 900;font-size: 18px;">车况说明 : </span><br><br>
-
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">外观</span><br>外观无可见瑕疵和色差
-                        </p>
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">内饰</span><br>内饰干净整洁无明显可见磨损；
-                            无异味
-                        </p>
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">工况</span><br>2年且4万公里以内；<br>
-                            动力系统、机械部位运行正常且无维修；<br>
-                            按时保养且记录完整；电子系统无任何故障
-                        </p>
+                    <div class="padding-left15 padding-right15 padding-bottom20">
+                        <span class="font-size18"
+                              style="border-left: 5px solid #007aff; padding:3px 0">&nbsp;车况说明</span>
+                        <span class="black4 mui-pull-right font-size15">为您提供精准的车辆估值服务</span>
                     </div>
+                    <div class="padding-left15 padding-right15 mui-row car-content padding-bottom20">
+                        <span class="mui-col-xs-3 mui-text-center">外观</span>
+                        <span class="mui-col-xs-9 black6">外观无可见瑕疵和色差</span>
 
+                        <span class="mui-col-xs-3 mui-text-center">内饰</span>
+                        <span class="mui-col-xs-9 black6">内饰干净整洁无明显可见磨损;无异味</span>
 
+                        <span class="mui-col-xs-3 mui-text-center">工况</span>
+                        <span class="mui-col-xs-9 black6">2年且4万公里以内；动力系统、机械部位运行正常且无维修；按时保养且记录完整；电子系统无任何故障</span>
+                    </div>
                 </div>
                 <div id="item2" class="mui-control-content">
-                    <div class="quote">
-                        <div>参考商家报价</div>
-                        <div id="reference-quote-good">00.0万</div>
+                    <div class="mui-text-center padding-bottom20">
+                        <div class="margin-top25"><span
+                                style="background-color: #007aff;color: #FFFFFF;padding:5px 15px 5px 15px;">车辆估值(万元)</span>
+                        </div>
+                        <div class="margin-top10 font-size18 " style="color: #007aff;font-weight: 700"
+                             id="reference-quote-good"></div>
                     </div>
-                    <div style="padding-left: 15px; padding-right: 15px">
-                        <span style="font-weight: 900;font-size: 18px;">车况说明 : </span><br><br>
+                    <div class="padding-left15 padding-right15 padding-bottom20">
+                        <span class="font-size18"
+                              style="border-left: 5px solid #007aff; padding:3px 0">&nbsp;车况说明</span>
+                        <span class="black4 mui-pull-right font-size15">为您提供精准的车辆估值服务</span>
+                    </div>
+                    <div class="padding-left15 padding-right15 mui-row car-content padding-bottom20">
+                        <span class="mui-col-xs-3 mui-text-center">外观</span>
+                        <span class="mui-col-xs-9 black6">外观无色差，有个别瑕疵</span>
 
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">外观</span><br>外观无色差，有个别瑕疵
-                        </p>
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">内饰</span><br>内饰有个别部件存在轻微磨损；
-                            无破损，无异味
-                        </p>
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">工况</span><br>20万公里以内；动力系统运行正常且无维修；<br>
-                            机械部位运行正常，有部分维修或更换记录；<br>
-                            电子设备及模块使用正常
-                        </p>
+                        <span class="mui-col-xs-3 mui-text-center">内饰</span>
+                        <span class="mui-col-xs-9 black6">内饰有个别部件存在轻微磨损；无破损，无异味</span>
+
+                        <span class="mui-col-xs-3 mui-text-center">外观</span>
+                        <span class="mui-col-xs-9 black6">20万公里以内；动力系统运行正常且无维修；机械部位运行正常，有部分维修或更换记录；电子设备及模块使用正常</span>
                     </div>
                 </div>
                 <div id="item3" class="mui-control-content">
-                    <div class="quote">
-                        <div>参考商家报价</div>
-                        <div id="reference-quote-ordinary">00.0万</div>
+                    <div class="mui-text-center padding-bottom20">
+                        <div class="margin-top25"><span
+                                style="background-color: #007aff;color: #FFFFFF;padding:5px 15px 5px 15px;">车辆估值(万元)</span>
+                        </div>
+                        <div class="margin-top10 font-size18 " style="color: #007aff;font-weight: 700"
+                             id="reference-quote-ordinary"></div>
                     </div>
-                    <div style="padding-left: 15px; padding-right: 15px">
-                        <span style="font-weight: 900;font-size: 18px;">车况说明 : </span><br><br>
+                    <div class="padding-left15 padding-right15 padding-bottom20">
+                        <span class="font-size18"
+                              style="border-left: 5px solid #007aff; padding:3px 0">&nbsp;车况说明</span>
+                        <span class="black4 mui-pull-right font-size15">为您提供精准的车辆估值服务</span>
+                    </div>
+                    <div class="padding-left15 padding-right15 mui-row car-content padding-bottom20">
+                        <span class="mui-col-xs-3 mui-text-center">外观</span>
+                        <span class="mui-col-xs-9 black6">外观有轻微色差，有少量瑕疵</span>
 
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">外观</span><br>外观有轻微色差，有少量瑕疵
-                        </p>
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">内饰</span><br>内饰有少量部件存在磨损，个别严重破损；<br>
-                            通风后不存在明显异味
-                        </p>
-                        <p>
-                            <span style="font-weight: 900;font-size: 18px;">工况</span><br>动力系统正常且无维修；<br>
-                            机械部位运行存在异常，有部分维修或更换记录
-                        </p>
+                        <span class="mui-col-xs-3 mui-text-center">内饰</span>
+                        <span class="mui-col-xs-9 black6">内饰有少量部件存在磨损，个别严重破损；通风后不存在明显异味</span>
+
+                        <span class="mui-col-xs-3 mui-text-center">外观</span>
+                        <span class="mui-col-xs-9 black6">动力系统正常且无维修；机械部位运行存在异常，有部分维修或更换记录</span>
+                    </div>
+                </div>
+
+                <div class="mui-text-center">
+                    <div>交易价格</div>
+                    <hr style="height: 5px;width:30px; background-color: #007aff;border: none;">
+                </div>
+
+                <div class="mui-row mui-text-center padding-bottom20" style="width: 80%; margin: auto">
+                    <div class="mui-col-xs-6 border-top border-left "
+                         style="background-color: rgba(0,0,0,0.2); padding: 15px;">车商收购价
+                    </div>
+                    <div class="mui-col-xs-6 border-top border-left border-right" style="padding: 15px"
+                         id="dealerBuyPrice"></div>
+
+                    <div class="mui-col-xs-6 border-top border-left"
+                         style="background-color: rgba(0,0,0,0.2); padding: 15px">车商零售价
+                    </div>
+                    <div class="mui-col-xs-6 border-top border-left border-right border-bottom" style="padding: 15px"
+                         id="dealerPrice">
                     </div>
                 </div>
             </div>
 
+            <div id="tab2-con" class="mui-row mui-text-center padding-top20" style="display: none;">
+                <div class="mui-text-center">
+                    <div>车辆零售价历史走势</div>
+                    <hr style="height: 5px;width:30px; background-color: #007aff;border: none;">
+                </div>
+                <div class="mui-col-xs-12">
+                    <div id="container1" style="height: 300px; width: 300px;margin: auto"></div>
+                </div>
+                <div class="mui-text-center">
+                    <div>车辆零售价未来走势</div>
+                    <hr style="height: 5px;width:30px; background-color: #007aff;border: none;">
+                </div>
+                <div class="mui-col-xs-12">
+                    <div id="container" style="height: 300px; width: 300px;margin: auto"></div>
+                </div>
+            </div>
+            <div id="tab3-con" style="display: none">
 
-            <div class="valuaR-reference-value mui-text-center font-size15">
-                <span>新车参考价：</span>
-                <span id="valuaR-price" class="mui-h4 orange"> </span>
-                <span>万元</span>
+            </div>
+            <div class="mui-row">
+                <div class="mui-col-xs-6" style="padding: 0 10px 0 20px">
+                    <button class="mui-btn mui-btn-block mui-btn-danger">分享爱车报告</button>
+                </div>
+                <div class="mui-col-xs-6" style="padding: 0 20px 0 10px">
+                    <button class="mui-btn mui-btn-block"
+                            style="border: 1px solid #007aff;background-color: #007aff; color: #FFFFFF">
+                        出售爱车
+                    </button>
+                </div>
             </div>
         </div>
-        <h6 class="mui-text-center padding-top10 padding-bottom20 cyan">估值价格仅供参考，买卖车辆请以实际价格为准</h6>
-        <div class="paddingLR12 margin-top10 margin-bottom20">
-            <button id="valuaR-buy-Btn" type="button" class="mui-btn mui-btn-blue btn-full">
-                返回车主权益页
-            </button>
-        </div>
     </div>
-</div>
-<script src="../dist/js/mui.min.js"></script>
-<script src="../dist/js/common.util.js"></script>
-<script src="../dist/js/common.mui.js"></script>
-<script>
-    var obj = JSON.parse(getQueryString("obj"));
-    document.getElementById("valuaR-Pic").setAttribute("src", obj.carLogoUrl);
-    document.getElementById("title").innerHTML = obj.title;
-    document.getElementById("date").innerHTML = obj.regDate;
-    document.getElementById("kilometre").innerHTML = obj.mile;
-    document.getElementById("reference-quote-excellent").innerHTML = obj.highPrice + '万元';
-    document.getElementById("reference-quote-good").innerHTML = obj.goodPrice + '万元';
-    document.getElementById("reference-quote-ordinary").innerHTML = obj.lowPrice + '万元';
-    document.getElementById("valuaR-price").innerHTML = obj.price;
-    document.getElementById("valuaR-buy-Btn").onclick = function () {
-        history.go(-2);
-    }
-</script>
+    <script src="../dist/js/mui.min.js"></script>
+    <script src="../dist/js/common.util.js"></script>
+    <script src="../dist/js/common.mui.js"></script>
+    <script src="../dist/js/echarts.common.min.js"></script>
+    <script src="../dist/js/valuation_result.js"></script>
 </body>
 </html>

@@ -52,7 +52,6 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
         type: 'post',
         headers: {'Content-Type': 'application/json'},
         success: function (data) {
-            console.log(data);
             var _data = data;
             mui.ajax("https://mobile.sxwinstar.net/ccb-api/api/v1/cbc/valuations", {
                 data: {
@@ -73,7 +72,6 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
                     location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
                 }
             });
-            // location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(data));
         },
         error: function (data) {
             if (data.status == 404) {
