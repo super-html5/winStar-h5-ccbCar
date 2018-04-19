@@ -16,11 +16,13 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
     var plateNumber = getQueryString('plateNumber');
     console.log(plateNumber);
     var zone = document.getElementById("cityResult").getAttribute("data-value");
+    var zoneText = document.getElementById("cityResult").innerHTML;
     if (!zone) {
         mui.alert("请选择车辆注册地！");
         return false;
     }
     var modelId = mui('#modelResult')[0].getAttribute("data-value");
+    var modelIdText = mui('#modelResult')[0].innerHTML;
     if (!modelId) {
         mui.alert("请选择车型！");
         return false;
@@ -41,37 +43,42 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
         return false;
     }
     //http://localhost:8082/api/v1/valuations
-    mui.ajax(getKey(valuation), {
-        data: {
-            modelId: modelId,
-            zone: zone,
-            regDate: regDate,
-            mile: mile
-        },
+    //http://127.0.0.1:8080/ccb-api/api/v1/cbc/valuations/getUsedCarPrice
+    var objText = {
+        'zone': zone,
+        'zoneText': zoneText,
+        'modelIdText': modelIdText,
+        'regDate': regDate,
+        'mile': mile,
+        'modelId': modelId
+    };
+    var ss = 'http://127.0.0.1:8080/ccb-api/api/v1/cbc/valuations/getUsedCarPrice?modelId=' + modelId + '&zone=' + zone + '&regDate=' + regDate + '&mile=' + mile;
+    mui.ajax(ss, {
         dataType: 'json',
-        type: 'post',
-        headers: {'Content-Type': 'application/json'},
+        type: 'get',
+        headers: {'Content-Type': 'application/json', 'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'},
         success: function (data) {
-            var _data = data;
-            mui.ajax("https://mobile.sxwinstar.net/ccb-api/api/v1/cbc/valuations", {
-                data: {
-                    modelId: modelId,
-                    zone: zone,
-                    regDate: regDate,
-                    mile: mile,
-                    plateNumber: plateNumber,
-                    price: data.highPrice * 10000
-                },
-                dataType: 'json',
-                type: 'post',
-                headers: {'Content-Type': 'application/json'},
-                success: function (data) {
-                    location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
-                },
-                error: function (data) {
-                    location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
-                }
-            });
+            // var _data = data;
+            // mui.ajax("https://mobile.sxwinstar.net/ccb-api/api/v1/cbc/valuations", {
+            //     data: {
+            //         modelId: modelId,
+            //         zone: zone,
+            //         regDate: regDate,
+            //         mile: mile,
+            //         plateNumber: plateNumber,
+            //         price: data.highPrice * 10000
+            //     },
+            //     dataType: 'json',
+            //     type: 'post',
+            //     headers: {'Content-Type': 'application/json'},
+            //     success: function (data) {
+            //         location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
+            //     },
+            //     error: function (data) {
+            //         location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
+            //     }
+            // });
+            location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(data)) + '&objText=' + escape(JSON.stringify(objText));
         },
         error: function (data) {
             if (data.status == 404) {

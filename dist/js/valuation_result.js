@@ -1,16 +1,53 @@
 var obj = JSON.parse(getQueryString("obj"));
+var objText = JSON.parse(getQueryString("objText"));
 console.log(obj);
-document.getElementById("date").innerHTML = obj.regDate;
-document.getElementById("kilometre").innerHTML = obj.mile;
-document.getElementById("reference-quote-excellent").innerHTML = obj.highPrice;
-document.getElementById("reference-quote-good").innerHTML = obj.goodPrice;
-document.getElementById("reference-quote-ordinary").innerHTML = obj.lowPrice;
-document.getElementById("valuaR-price").innerHTML = obj.price;
-var _zone = obj.title.split(' ');
-document.getElementById("title").innerHTML = obj.title.substring(0, obj.title.lastIndexOf(' '));
-document.getElementById("_zone").innerHTML = _zone[_zone.length - 1];
-document.getElementById("dealerBuyPrice").innerHTML = obj.dealerBuyPrice + ' 万';
-document.getElementById("dealerPrice").innerHTML = obj.dealerPrice + ' 万';
+console.log(objText);
+document.getElementById("date").innerHTML = objText.regDate;
+document.getElementById("kilometre").innerHTML = objText.mile;
+document.getElementById("valuaR-price").innerHTML = obj.model_price;
+document.getElementById("title").innerHTML = objText.modelIdText;
+document.getElementById("_zone").innerHTML = objText.zoneText;
+
+
+/**
+ * 优秀
+ */
+document.getElementById("excellent_dealer_buy_price").innerHTML = obj.eval_prices[0].dealer_buy_price;
+document.getElementById("excellent_individual_price").innerHTML = obj.eval_prices[0].individual_price;
+document.getElementById("excellent_dealer_price").innerHTML = obj.eval_prices[0].dealer_price;
+
+document.getElementById("excellent_dealer_low_buy_price").innerHTML = obj.eval_prices[0].dealer_low_buy_price;
+document.getElementById("excellent_individual_low_sold_price").innerHTML = obj.eval_prices[0].individual_low_sold_price;
+document.getElementById("excellent_dealer_low_sold_price").innerHTML = obj.eval_prices[0].dealer_low_sold_price;
+document.getElementById("excellent_dealer_high_sold_price").innerHTML = obj.eval_prices[0].dealer_high_sold_price;
+
+
+/**
+ * 良好
+ * @type {Element}
+ */
+document.getElementById("good_dealer_buy_price").innerHTML = obj.eval_prices[1].dealer_buy_price;
+document.getElementById("good_individual_price").innerHTML = obj.eval_prices[1].individual_price;
+document.getElementById("good_dealer_price").innerHTML = obj.eval_prices[1].dealer_price;
+
+document.getElementById("good_dealer_low_buy_price").innerHTML = obj.eval_prices[1].dealer_low_buy_price;
+document.getElementById("good_individual_low_sold_price").innerHTML = obj.eval_prices[1].individual_low_sold_price;
+document.getElementById("good_dealer_low_sold_price").innerHTML = obj.eval_prices[1].dealer_low_sold_price;
+document.getElementById("good_dealer_high_sold_price").innerHTML = obj.eval_prices[1].dealer_high_sold_price;
+
+
+/**
+ * 一般
+ * @type {Element}
+ */
+document.getElementById("normal_dealer_buy_price").innerHTML = obj.eval_prices[2].dealer_buy_price;
+document.getElementById("normal_individual_price").innerHTML = obj.eval_prices[2].individual_price;
+document.getElementById("normal_dealer_price").innerHTML = obj.eval_prices[2].dealer_price;
+
+document.getElementById("normal_dealer_low_buy_price").innerHTML = obj.eval_prices[2].dealer_low_buy_price;
+document.getElementById("normal_individual_low_sold_price").innerHTML = obj.eval_prices[2].individual_low_sold_price;
+document.getElementById("normal_dealer_low_sold_price").innerHTML = obj.eval_prices[2].dealer_low_sold_price;
+document.getElementById("normal_dealer_high_sold_price").innerHTML = obj.eval_prices[2].dealer_high_sold_price;
 
 var tab1 = document.getElementById("tab1");
 var tab2 = document.getElementById("tab2");
@@ -46,22 +83,19 @@ tab3.onclick = function () {
 var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 
-var _dom = document.getElementById("container1");
-var _myChart = echarts.init(_dom);
 /**
  * 获取未来走势
  */
 var _u = 'http://127.0.0.1:8080/ccb-api/api/v1/cbc/valuations/priceFutureRecord?modelId=' +
-    obj.modelId + '&zone=' + obj.zone + '&regDate=' + obj.regDate + '&mile=' + obj.mile;
+    objText.modelId + '&zone=' + objText.zone + '&regDate=' + objText.regDate + '&mile=' + objText.mile;
 mui.ajax(_u, {
     dataType: 'json',
     type: 'get',
     headers: {
         'Content-Type': 'application/json',
-        'token_id': '3324668167e04169a99f37fcfa88c43f'
+        'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
     },
     success: function (data) {
-        // console.log(data);
         var years = [];
         var prices = [];
         for (var item in data.residual_rate) {
@@ -69,6 +103,11 @@ mui.ajax(_u, {
             prices.push(data.residual_rate[item].price)
         }
         option = {
+            title: {
+                subtext: '单位(万元)',
+                x: 'left',
+                align: 'right'
+            },
             xAxis: {
                 type: 'category',
                 boundaryGap: true,
@@ -76,63 +115,24 @@ mui.ajax(_u, {
             },
             yAxis: {
                 type: 'value',
-                name: '单位：万元'
+                name: '单位：万元',
+                show: false
             },
             series: [{
                 data: prices,
                 type: 'line',
-                areaStyle: {},
-                itemStyle: {normal: {label: {show: true}}},
+                itemStyle: {
+                    normal: {
+                        label: {show: true}, lineStyle: {
+                            color: '#999'
+                        },
+                        color: '#999'
+                    }
+                },
             }]
         };
         if (option && typeof option === "object") {
             myChart.setOption(option, true);
-        }
-    },
-    error: function (data) {
-    }
-});
-
-/**
- 查看历史价格
- **/
-
-var _uu = 'http://127.0.0.1:8080/ccb-api/api/v1/cbc/valuations/priceHistoricalRecord?modelId=' +
-    obj.modelId + '&zone=' + obj.zone + '&regDate=' + obj.regDate + '&mile=' + obj.mile;
-mui.ajax(_uu, {
-    dataType: 'json',
-    type: 'get',
-    headers: {
-        'Content-Type': 'application/json',
-        'token_id': '3324668167e04169a99f37fcfa88c43f'
-    },
-    success: function (data) {
-        console.log(data);
-        var _years = [];
-        var _prices = [];
-        for (var item in data.trends) {
-            _years.push(data.trends[item].trend_date);
-            _prices.push(data.trends[item].eval_price);
-        }
-        option = {
-            xAxis: {
-                type: 'category',
-                boundaryGap: true,
-                data: _years
-            },
-            yAxis: {
-                type: 'value',
-                name: '单位：万元'
-            },
-            series: [{
-                data: _prices,
-                type: 'line',
-                areaStyle: {},
-                itemStyle: {normal: {label: {show: true}}},
-            }]
-        };
-        if (option && typeof option === "object") {
-            _myChart.setOption(option, true);
         }
     },
     error: function (data) {
