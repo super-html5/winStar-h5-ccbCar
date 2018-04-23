@@ -2,6 +2,7 @@ var obj = JSON.parse(getQueryString("obj"));
 var objText = JSON.parse(getQueryString("objText"));
 console.log(obj);
 console.log(objText);
+var isShow = false;
 document.getElementById("date").innerHTML = objText.regDate;
 document.getElementById("kilometre").innerHTML = objText.mile;
 document.getElementById("valuaR-price").innerHTML = obj.model_price;
@@ -55,7 +56,9 @@ var tab3 = document.getElementById("tab3");
 var tab1con = document.getElementById("tab1-con");
 var tab2con = document.getElementById("tab2-con");
 var tab3con = document.getElementById("tab3-con");
-
+var bottom_btn = document.getElementById("bottom_btn");
+var showSearchCar = document.getElementById("showSearchCar");
+var carDetailsInfo = document.getElementById("carDetailsInfo");
 tab1.onclick = function () {
     tab1.setAttribute('class', 'tab-active');
     tab2.removeAttribute('class');
@@ -63,6 +66,7 @@ tab1.onclick = function () {
     tab1con.style.display = 'block';
     tab2con.style.display = 'none';
     tab3con.style.display = 'none';
+    bottom_btn.style.display = 'block';
 };
 tab2.onclick = function () {
     tab2.setAttribute('class', 'tab-active');
@@ -71,6 +75,7 @@ tab2.onclick = function () {
     tab2con.style.display = 'block';
     tab1con.style.display = 'none';
     tab3con.style.display = 'none';
+    bottom_btn.style.display = 'block';
 };
 tab3.onclick = function () {
     tab3.setAttribute('class', 'tab-active');
@@ -79,7 +84,15 @@ tab3.onclick = function () {
     tab3con.style.display = 'block';
     tab1con.style.display = 'none';
     tab2con.style.display = 'none';
+
+    if (isShow) {
+        bottom_btn.style.display = 'block';
+    } else {
+        bottom_btn.style.display = 'none';
+    }
+
 };
+
 var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 
@@ -138,3 +151,92 @@ mui.ajax(_u, {
     error: function (data) {
     }
 });
+
+// var carType = document.getElementById('carType'); //车辆型号
+var brand = document.getElementById('brand');	//中文品牌
+var checkTime = document.getElementById('checkTime');	//检验有效期
+// var displacement = document.getElementById('displacement');	//排量
+var environmental = document.getElementById('environmental');	//环保情况
+var illegalNumber = document.getElementById('illegalNumber');	//累计违法数量
+var integral = document.getElementById('integral');	//累计罚款积分
+var isChina = document.getElementById('isChina');	//是否国产
+var isTransfer = document.getElementById('isTransfer');	//是否过户
+var _location = document.getElementById('_location');	//车辆所在地
+var mortgageStatus = document.getElementById('mortgageStatus');	//抵押状态
+var power = document.getElementById('power');	//功率
+var productionTime = document.getElementById('productionTime');	//出厂日期
+var registerTime = document.getElementById('registerTime');	//初登日期
+var strongInsuranceTime = document.getElementById('strongInsuranceTime');	//交强险有效期
+var vehicleStatus = document.getElementById('vehicleStatus');	//机动车状态
+var vehicleType = document.getElementById('vehicleType');	//车辆类型
+
+
+var vehicleStatus_text = document.getElementById('vehicleStatus_text');
+var vehicleType_text = document.getElementById('vehicleType_text');
+
+/**
+ 查询车辆详情
+ **/
+function getCarDetails() {
+    var engineNumber = document.getElementById("engineNumber").value;
+    if (!engineNumber || engineNumber.length != 6) {
+        alert('请输入正确的发动机后六位');
+        return;
+    }
+    var _u = 'http://127.0.0.1:8080/ccb-api/api/v1/cbc/valuations/getVehicleDetail?modelId=' +
+        objText.modelId + '&plateNumber=' + objText.plateNumber + '&engineNumber=' + engineNumber;
+    mui.ajax(_u, {
+        dataType: 'json',
+        type: 'get',
+        headers: {
+            'Content-Type': 'application/json',
+            'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
+        },
+        success: function (data) {
+            console.log(data);
+            bottom_btn.style.display = 'block';
+            showSearchCar.style.display = 'none';
+            carDetailsInfo.style.display = 'block';
+            isShow = true;
+            // carType.innerHTML = objText.modelIdText;
+            data.brand ? (brand.innerHTML = data.brand ) : (brand.innerHTML = '- -');
+            data.checkTime ? (checkTime.innerHTML = data.checkTime ) : (checkTime.innerHTML = '- -');
+            // data.displacement ? (displacement.innerHTML = data.displacement ) : (displacement.innerHTML = '- -');
+            data.environmental ? (environmental.innerHTML = data.environmental ) : (environmental.innerHTML = '- -');
+            data.illegalNumber ? (illegalNumber.innerHTML = data.illegalNumber ) : (illegalNumber.innerHTML = '- -');
+            data.integral ? (integral.innerHTML = data.integral ) : (integral.innerHTML = '- -');
+            data.isChina ? (isChina.innerHTML = data.isChina ) : (isChina.innerHTML = '- -');
+            data.isTransfer ? (isTransfer.innerHTML = data.isTransfer ) : (isTransfer.innerHTML = '- -');
+            data.location ? (_location.innerHTML = data.location ) : (_location.innerHTML = '- -');
+            data.mortgageStatus ? (mortgageStatus.innerHTML = data.mortgageStatus ) : (mortgageStatus.innerHTML = '- -');
+            data.power ? (power.innerHTML = data.displacement + ' / ' + data.power + 'kw') : (power.innerHTML = '- - / - -');
+            data.productionTime ? (productionTime.innerHTML = data.productionTime ) : (productionTime.innerHTML = '- -');
+            data.registerTime ? (registerTime.innerHTML = data.registerTime ) : (registerTime.innerHTML = '- -');
+            data.strongInsuranceTime ? (strongInsuranceTime.innerHTML = data.strongInsuranceTime ) : (strongInsuranceTime.innerHTML = '- -');
+            data.vehicleStatus ? (vehicleStatus.innerHTML = data.vehicleStatus ) : (vehicleStatus.innerHTML = '- -');
+            data.vehicleType ? (vehicleType.innerHTML = data.vehicleType ) : (vehicleType.innerHTML = '- -');
+            data.vehicleStatus ? (vehicleStatus_text.innerHTML = data.vehicleStatus ) : (vehicleStatus_text.innerHTML = ' -- ');
+            data.vehicleType ? (vehicleType_text.innerHTML = data.vehicleType ) : (vehicleType_text.innerHTML = ' -- ');
+
+
+            if (!data.illegalNumber) {
+                document.getElementById('creditStatus').innerHTML = ' -- ';
+            } else {
+                if (data.illegalNumber < 3) {
+                    document.getElementById('creditStatus').innerHTML = '优秀';
+                } else if (data.illegalNumber >= 3 && data.illegalNumber <= 6) {
+                    document.getElementById('creditStatus').innerHTML = '良好';
+                } else if (data.illegalNumber > 6 && data.illegalNumber < 10) {
+                    document.getElementById('creditStatus').innerHTML = '中等';
+                } else if (data.illegalNumber >= 10) {
+                    document.getElementById('creditStatus').innerHTML = '较差';
+                }
+            }
+        },
+        error: function (data) {
+            if (JSON.parse(data.response).code == 'notMatchEngineNumber.NotRule') {
+                alert('发动机后六位有误，请重新输入');
+            }
+        }
+    });
+}

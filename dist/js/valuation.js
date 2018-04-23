@@ -50,7 +50,8 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
         'modelIdText': modelIdText,
         'regDate': regDate,
         'mile': mile,
-        'modelId': modelId
+        'modelId': modelId,
+        'plateNumber': '陕A3UW53'
     };
     var ss = 'http://127.0.0.1:8080/ccb-api/api/v1/cbc/valuations/getUsedCarPrice?modelId=' + modelId + '&zone=' + zone + '&regDate=' + regDate + '&mile=' + mile;
     mui.ajax(ss, {
