@@ -5,6 +5,7 @@ console.log(objText);
 var isShow = false;
 document.getElementById("date").innerHTML = objText.regDate;
 document.getElementById("kilometre").innerHTML = objText.mile;
+document.getElementById("fxTitle").value = objText.modelIdText;
 document.getElementById("valuaR-price").innerHTML = obj.model_price;
 document.getElementById("title").innerHTML = objText.modelIdText;
 document.getElementById("_zone").innerHTML = objText.zoneText;
@@ -223,13 +224,13 @@ function getCarDetails() {
                 document.getElementById('creditStatus').innerHTML = ' -- ';
             } else {
                 if (data.illegalNumber < 3) {
-                    document.getElementById('creditStatus').innerHTML = '优秀';
+                    document.getElementById('creditStatus').innerHTML = '车辆驾驶习惯：优秀';
                 } else if (data.illegalNumber >= 3 && data.illegalNumber <= 6) {
-                    document.getElementById('creditStatus').innerHTML = '良好';
+                    document.getElementById('creditStatus').innerHTML = '车辆驾驶习惯：良好';
                 } else if (data.illegalNumber > 6 && data.illegalNumber < 10) {
-                    document.getElementById('creditStatus').innerHTML = '中等';
+                    document.getElementById('creditStatus').innerHTML = '车辆驾驶习惯：中等';
                 } else if (data.illegalNumber >= 10) {
-                    document.getElementById('creditStatus').innerHTML = '较差';
+                    document.getElementById('creditStatus').innerHTML = '车辆驾驶习惯：较差';
                 }
             }
         },
