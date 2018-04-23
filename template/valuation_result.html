@@ -214,7 +214,7 @@
         </div>
         <div id="tab2-con" class="mui-row mui-text-center padding-top20" style="display: none;">
             <div class="mui-text-center">
-                <div>车辆零售价未来走势</div>
+                <div>车辆零售价未来走势(年度)</div>
                 <hr style="height: 5px;width:30px; background-color: #47cc74;border: none;">
             </div>
             <div class="mui-col-xs-12">
@@ -222,28 +222,41 @@
             </div>
         </div>
         <div id="tab3-con" style="display: none">
-            <ul class="mui-table-view padding-left25 padding-right25 padding-bottom20">
-                <li class="mui-table-view-cell">车辆号牌<span class="mui-badge clearBg font-size16">陕A3UW53</span></li>
-                <li class="mui-table-view-cell">中文品牌<span class="mui-badge clearBg font-size16">马自达</span></li>
-                <li class="mui-table-view-cell">国产/进口<span class="mui-badge clearBg font-size16">国产</span></li>
-                <li class="mui-table-view-cell">排量/功率<span class="mui-badge clearBg font-size16">1998ml/147kw</span>
-                </li>
-                <li class="mui-table-view-cell">机动车状态<span class="mui-badge clearBg font-size16">正常</span></li>
-                <li class="mui-table-view-cell">抵押状态<span class="mui-badge clearBg font-size16">正常</span></li>
-                <li class="mui-table-view-cell">检验有效期<span class="mui-badge clearBg font-size16">2018.08.18</span>
-                </li>
-                <li class="mui-table-view-cell">交强险有效期<span class="mui-badge clearBg font-size16">2018.08.18</span>
-                </li>
-                <li class="mui-table-view-cell">出厂日期<span class="mui-badge clearBg font-size16">2018.08.18</span>
-                </li>
-                <li class="mui-table-view-cell">初登日期<span class="mui-badge clearBg font-size16">2018.08.18</span>
-                </li>
-                <li class="mui-table-view-cell">是否过户<span class="mui-badge clearBg font-size16">否</span></li>
-                <li class="mui-table-view-cell">环保达标情况<span class="mui-badge clearBg font-size16">达标</span></li>
-                <li class="mui-table-view-cell">车辆所在地<span class="mui-badge clearBg font-size16">西安</span></li>
-                <li class="mui-table-view-cell">累计违法数量（个）<span class="mui-badge clearBg font-size16">10</span></li>
-                <li class="mui-table-view-cell">累计罚款记分（分）<span class="mui-badge clearBg font-size16">9</span></li>
-            </ul>
+
+            <div class="mui-text-center" style="padding-top: 40px">请输入爱车的发动机号后6位<br>
+                以查看车辆详情信息
+            </div>
+            <div style="margin: auto;width: 90%;" class="padding-top20 padding-bottom20">
+                <input id="engineNumber" maxlength="6" class="mui-text-center"
+                       style="margin: auto;width: 100%;background-color: #eeeeee;line-height: 50px; border: none"
+                       placeholder="请输出发动机后六位" required/>
+            </div>
+            <button id="searchCarDetails" class="mui-btn mui-btn-block"
+                    style="border: 1px solid rgb(37,135,251);background-color: rgb(37,135,251); color: #FFFFFF; width: 80%;margin: auto">
+                分享爱车报告
+            </button>
+            <!--<ul class="mui-table-view padding-left25 padding-right25 padding-bottom20">-->
+            <!--<li class="mui-table-view-cell">车辆类型<span class="mui-badge clearBg font-size16">陕A3UW53</span></li>-->
+            <!--<li class="mui-table-view-cell">中文品牌<span class="mui-badge clearBg font-size16">马自达</span></li>-->
+            <!--<li class="mui-table-view-cell">国产/进口<span class="mui-badge clearBg font-size16">国产</span></li>-->
+            <!--<li class="mui-table-view-cell">排量/功率<span class="mui-badge clearBg font-size16">1998ml/147kw</span>-->
+            <!--</li>-->
+            <!--<li class="mui-table-view-cell">机动车状态<span class="mui-badge clearBg font-size16">正常</span></li>-->
+            <!--<li class="mui-table-view-cell">抵押状态<span class="mui-badge clearBg font-size16">正常</span></li>-->
+            <!--<li class="mui-table-view-cell">检验有效期<span class="mui-badge clearBg font-size16">2018.08.18</span>-->
+            <!--</li>-->
+            <!--<li class="mui-table-view-cell">交强险有效期<span class="mui-badge clearBg font-size16">2018.08.18</span>-->
+            <!--</li>-->
+            <!--<li class="mui-table-view-cell">出厂日期<span class="mui-badge clearBg font-size16">2018.08.18</span>-->
+            <!--</li>-->
+            <!--<li class="mui-table-view-cell">初登日期<span class="mui-badge clearBg font-size16">2018.08.18</span>-->
+            <!--</li>-->
+            <!--<li class="mui-table-view-cell">是否过户<span class="mui-badge clearBg font-size16">否</span></li>-->
+            <!--<li class="mui-table-view-cell">环保达标情况<span class="mui-badge clearBg font-size16">达标</span></li>-->
+            <!--<li class="mui-table-view-cell">车辆所在地<span class="mui-badge clearBg font-size16">西安</span></li>-->
+            <!--<li class="mui-table-view-cell">累计违法数量（个）<span class="mui-badge clearBg font-size16">10</span></li>-->
+            <!--<li class="mui-table-view-cell">累计罚款记分（分）<span class="mui-badge clearBg font-size16">9</span></li>-->
+            <!--</ul>-->
         </div>
         <div class="mui-row margin-top25">
             <div class="mui-col-xs-6" style="padding: 0 10px 0 20px">

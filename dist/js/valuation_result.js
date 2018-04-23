@@ -111,7 +111,7 @@ mui.ajax(_u, {
             xAxis: {
                 type: 'category',
                 boundaryGap: true,
-                data: years
+                data: years,
             },
             yAxis: {
                 type: 'value',
