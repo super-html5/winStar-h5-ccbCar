@@ -106,8 +106,7 @@ mui.ajax(_u, {
     dataType: 'json',
     type: 'get',
     headers: {
-        'Content-Type': 'application/json',
-        'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
+        'Content-Type': 'application/json'
     },
     success: function (data) {
         document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winStar-h5-ccbCar/template/f_valuation_result.html?objCar='
@@ -192,8 +191,7 @@ function getCarDetails() {
         dataType: 'json',
         type: 'get',
         headers: {
-            'Content-Type': 'application/json',
-            'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
+            'Content-Type': 'application/json'
         },
         success: function (data) {
             console.log(data);
@@ -285,10 +283,10 @@ function sell_car() {
         return;
     }
 
-    // /**
-    //  * 出售车辆
-    //  */
-    var su = '/ccb-api/api/v1/cbc/couponActivities/saleVehicle';
+    /**
+     * 出售车辆
+     */
+    var su = '/ccb-api/api/v1/cbc/valuations/saleVehicle';
     $.ajax({
         url: su,
         type: 'post',
@@ -297,11 +295,11 @@ function sell_car() {
             phoneNumber: $('#phoneNumber').val(),
             plateNumber: objText.plateNumber,
             price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
-            saleTime: $('#saleTime').val()
+            saleTime: $('#saleTime').val(),
+            accountId: '0cd3a6a461c94caf99c466eabbedfbc8'
         },
         beforeSend: function (res) {
             res.setRequestHeader('Content-Type', 'application/json');
-            res.setRequestHeader('token_id', '0cd3a6a461c94caf99c466eabbedfbc8');
         },
         success: function (response) {
             alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
