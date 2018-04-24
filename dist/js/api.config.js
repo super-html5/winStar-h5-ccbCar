@@ -2,7 +2,7 @@
  * 基础路径
  */
 var base_path = "https://mobile.sxwinstar.net/wechat_access/";
-// var base_path = "http://192.168.118.111:7000/";
+var sbase_path = "http://ch.sxeccellentdriving.com/ccb-api/";
 /**
  * 导航页
  */
@@ -57,7 +57,8 @@ var getModelBySeriesId = "api/v1/items/models/getModelsBySeriesId";
 /**
  * 车辆估值
  */
-var valuation = "api/v1/items/valuations";
+// var valuation = "api/v1/items/valuations";
+var valuation = 'api/v1/cbc/valuations/getUsedCarPrice';
 /**
  * 我要买车
  */
@@ -90,5 +91,8 @@ var seller_image_url = "";
 
 function getKey(key) {
     return base_path + key;
+}
+function sGetKey(key) {
+    return sbase_path + key;
 }
 
