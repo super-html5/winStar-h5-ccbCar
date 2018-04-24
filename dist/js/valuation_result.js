@@ -291,13 +291,13 @@ function sell_car() {
         url: su,
         type: 'post',
         dataType: "json",
-        data: {
+        data: JSON.stringify({
             phoneNumber: $('#phoneNumber').val(),
             plateNumber: objText.plateNumber,
             price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
             saleTime: $('#saleTime').val(),
             accountId: '0cd3a6a461c94caf99c466eabbedfbc8'
-        },
+        }),
         beforeSend: function (res) {
             res.setRequestHeader('Content-Type', 'application/json');
         },
@@ -306,7 +306,6 @@ function sell_car() {
             $("#maskLayer").fadeOut(500);
         },
         error: function (data) {
-            alert(JSON.stringify(data));
             console.log(data);
         }
     });
