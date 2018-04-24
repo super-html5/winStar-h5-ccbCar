@@ -285,30 +285,56 @@ function sell_car() {
         return;
     }
 
-    /**
-     * 获取未来走势
-     */
-    var _u = '/ccb-api/api/v1/cbc/couponActivities/saleVehicle';
-    mui.ajax(_u, {
-        dataType: 'json',
+    // /**
+    //  * 出售车辆
+    //  */
+    var su = '/ccb-api/api/v1/cbc/couponActivities/saleVehicle';
+    // mui.ajax(_u, {
+    //     dataType: 'json',
+    //     type: 'post',
+    //     data: {
+    //         phoneNumber: $('#phoneNumber').val(),
+    //         plateNumber: objText.plateNumber,
+    //         price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
+    //         saleTime: $('#saleTime').val()
+    //     },
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     beforeSend: function (res) {
+    //         res.setRequestHeader("token_id", "0cd3a6a461c94caf99c466eabbedfbc8");
+    //     },
+    //     success: function (data) {
+    //         console.log(data);
+    //         alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
+    //         $("#maskLayer").fadeOut(500);
+    //     },
+    //     error: function (data) {
+    //         alert(data);
+    //         console.log(data);
+    //     }
+    // });
+
+    $.ajax({
+        url: su,
         type: 'post',
+        dataType: "json",
         data: {
             phoneNumber: $('#phoneNumber').val(),
             plateNumber: objText.plateNumber,
             price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
             saleTime: $('#saleTime').val()
         },
-        headers: {
-            'Content-Type': 'application/json',
-            'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
+        beforeSend: function (res) {
+            res.setRequestHeader('Content-Type', 'application/json');
+            res.setRequestHeader('token_id', '0cd3a6a461c94caf99c466eabbedfbc8');
         },
-        success: function (data) {
-            console.log(data);
+        success: function (response) {
             alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
             $("#maskLayer").fadeOut(500);
         },
         error: function (data) {
-            alert(data);
+            alert(JSON.stringify(data));
             console.log(data);
         }
     });
