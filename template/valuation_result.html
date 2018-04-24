@@ -258,8 +258,8 @@
                 </div>
                 <div style="margin: auto;width: 90%;" class="padding-top20 padding-bottom20">
                     <input id="engineNumber" maxlength="6" class="mui-text-center"
-                           style="margin: auto;width: 100%;background-color: #eeeeee;line-height: 50px; border: none"
-                           placeholder="请输出发动机后六位" required/>
+                           style="margin: auto;width: 100%;background-color: #eeeeee; border: none"
+                           placeholder="请输出发动机后六位" required type="text"/>
                 </div>
                 <button onclick="getCarDetails()" class="mui-btn mui-btn-block"
                         style="border: 1px solid rgb(37,135,251);background-color: rgb(37,135,251); color: #FFFFFF; width: 80%;margin: auto">
@@ -378,7 +378,8 @@
                 </div>
                 <div class="mui-col-xs-6">
                     <input style="border:none;padding: 0;margin-bottom: 0;height: auto; border-bottom: 1px solid #000;width: 100%;font-size: 14px;"
-                           placeholder="出售价格" type="tel" id="price"/>
+                           placeholder="出售价格" onKeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))"
+                           type="number" id="price"/>
                 </div>
                 <div class="mui-col-xs-2">
                     万元
