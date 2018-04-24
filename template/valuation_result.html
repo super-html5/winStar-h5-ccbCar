@@ -9,6 +9,36 @@
     <link rel="stylesheet" href="../dist/css/mui.min.css">
     <link rel="stylesheet" href="../dist/css/self-css/public.css">
     <link rel="stylesheet" href="../dist/css/self-css/valuationSesult.css">
+    <link rel="stylesheet" href="../dist/css/mui.picker.min.css">
+    <style>
+
+        .mask-layer {
+            position: fixed;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .7);
+            display: none;
+        }
+
+        .popup-query {
+            position: absolute;
+            z-index: 101;
+            left: 50%;
+            top: 50%;
+            width: 84%;
+            margin-left: -42%;
+            background: #fff;
+            border-radius: .14rem;
+        }
+
+        .popup-query .query-padding {
+            padding: 0 .7rem .6rem;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body style="background-color: #FFFFFF">
 <div class="mui-content">
@@ -330,9 +360,71 @@
             </div>
             <div class="mui-col-xs-6" style="padding: 0 20px 0 10px">
                 <button class="mui-btn mui-btn-block"
-                        style="border: 1px solid rgb(37,135,251);background-color: rgb(37,135,251); color: #FFFFFF">
+                        style="border: 1px solid rgb(37,135,251);background-color: rgb(37,135,251); color: #FFFFFF"
+                        id="SellCard">
                     出售爱车
                 </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="maskLayer" class="mask-layer">
+    <div id="popupQuery" class="popup-query">
+        <div class="query-padding">
+            <div class="mui-text-center padding-bottom20 padding-top20">预售信息</div>
+            <div class="mui-row padding-bottom20">
+                <div class="mui-col-xs-4 mui-text-right padding-right15">
+                    预售价
+                </div>
+                <div class="mui-col-xs-6">
+                    <input style="border:none;padding: 0;margin-bottom: 0;height: auto; border-bottom: 1px solid #000;width: 100%;font-size: 14px;"
+                           placeholder="出售价格" type="tel" id="price"/>
+                </div>
+                <div class="mui-col-xs-2">
+                    万元
+                </div>
+            </div>
+            <div class="mui-row padding-bottom20">
+                <div class="mui-col-xs-4 mui-text-right padding-right15">
+                    出售时间
+                </div>
+                <div class="mui-col-xs-6" style="border-bottom: 1px solid #000;font-size: 14px;">
+                    <select id="saleTime" style="padding: 0;margin-bottom: 0;border: none;">
+                        <option value="1">请选择时间</option>
+                        <option value="一周内">一周内</option>
+                        <option value="半月内">半月内</option>
+                        <option value="一月内">一月内</option>
+                        <option value="半年内">半年内</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="mui-col-xs-2">
+                    <span class="mui-icon mui-icon-arrowdown"></span>
+                </div>
+            </div>
+            <div class="mui-row padding-bottom20">
+                <div class="mui-col-xs-4 mui-text-right padding-right15">
+                    手机号码
+                </div>
+                <div class="mui-col-xs-6">
+                    <input style="border:none;padding: 0;margin-bottom: 0;height: auto;  border-bottom: 1px solid #000;font-size: 14px"
+                           placeholder="手机号码" maxlength="11" type="tel" id="phoneNumber"/>
+                </div>
+                <div class="mui-col-xs-2">
+                </div>
+            </div>
+            <div class="mui-row margin-top25">
+                <div class="mui-col-xs-6 mui-text-center">
+                    <button class="mui-btn" style="width: 50%;" id="clearCard">
+                        取消
+                    </button>
+                </div>
+                <div class="mui-col-xs-6 mui-text-center">
+                    <button class="mui-btn" onclick="sell_car()"
+                            style="width:50%;border: 1px solid rgb(37,135,251);background-color: rgb(37,135,251); color: #FFFFFF">
+                        提交
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -347,10 +439,15 @@
 <script src="../dist/js/mui.min.js"></script>
 <script src="../dist/js/common.util.js"></script>
 <script src="../dist/js/common.mui.js"></script>
+<script src="../dist/js/mui.picker.min.js"></script>
 <script src="../dist/js/echarts.common.min.js"></script>
-<script src="../dist/js/valuation_result.js"></script>
 <script src="../dist/js/jquery-3.2.1.min.js"></script>
+<script src="../dist/js/valuation_result.js?v=1.0"></script>
 <script src="../dist/js/fx.js"></script>
+<script>
+
+</script>
 
 </body>
+
 </html>
