@@ -268,6 +268,7 @@ $("#query-mask-layer").on("click", function () {
 $("#clearCard").on("click", function () {
     $("#maskLayer").fadeOut(500);
 });
+
 function sell_car() {
     if (!$('#price').val()) {
         alert('请输入出售价格');
@@ -287,7 +288,7 @@ function sell_car() {
     /**
      * 获取未来走势
      */
-    var _u = '/ccb-api/api/v1/cbc/valuations/saleVehicle';
+    var _u = '/ccb-api/api/v1/cbc/couponActivities/saleVehicle';
     mui.ajax(_u, {
         dataType: 'json',
         type: 'post',
@@ -307,6 +308,7 @@ function sell_car() {
             $("#maskLayer").fadeOut(500);
         },
         error: function (data) {
+            alert(data);
             console.log(data);
         }
     });
