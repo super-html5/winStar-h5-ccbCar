@@ -12,7 +12,6 @@ mui('.mui-scroll-wrapper').scroll({
 });
 
 jQuery('#ca').click(function () {
-    alert('1');
     var plateNumber = getQueryString('plateNumber');
     console.log(plateNumber);
     var zone = document.getElementById("cityResult").getAttribute("data-value");
@@ -52,8 +51,7 @@ jQuery('#ca').click(function () {
         'plateNumber': '陕A3UW53'
     };
 
-    var ss = 'http://ch.sxeccellentdriving.com/ccb-api/api/v1/cbc/valuations/getUsedCarPrice?modelId=' + modelId + '&zone=' + zone + '&regDate=' + regDate + '&mile=' + mile;
-
+    var ss = '/ccb-api/api/v1/cbc/valuations/getUsedCarPrice?modelId=' + modelId + '&zone=' + zone + '&regDate=' + regDate + '&mile=' + mile;
 
     jQuery.ajax({
         url: ss,
@@ -64,51 +62,17 @@ jQuery('#ca').click(function () {
             'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
         },
         success: function (data) {
-            location.href = 'https://www.baidu.com';
+            if (data.error_msg) {
+                alert(data.error_msg);
+                return;
+            }
+            location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(data)) + '&objText=' + escape(JSON.stringify(objText));
         },
         error: function (data) {
             mui.alert("暂无报价！");
         }
     });
-    // mui.ajax(ss, {
-    //     dataType: 'json',
-    //     type: 'get',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
-    //     },
-    //     success: function (data) {
-    //         // if (data.error_msg) {
-    //         //     alert(data.error_msg);
-    //         //     return;
-    //         // }
-    //         // var _data = data;
-    //         // mui.ajax("https://mobile.sxwinstar.net/ccb-api/api/v1/cbc/valuations", {
-    //         //     data: {
-    //         //         modelId: modelId,
-    //         //         zone: zone,
-    //         //         regDate: regDate,
-    //         //         mile: mile,
-    //         //         plateNumber: plateNumber,
-    //         //         price: data.highPrice * 10000
-    //         //     },
-    //         //     dataType: 'json',
-    //         //     type: 'post',
-    //         //     headers: {'Content-Type': 'application/json'},
-    //         //     success: function (data) {
-    //         //         location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
-    //         //     },
-    //         //     error: function (data) {
-    //         //         location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data));
-    //         //     }
-    //         // });
-    //         location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(data)) + '&objText=' + escape(JSON.stringify(objText));
-    //     },
-    //     error: function (data) {
-    //         alert(JSON.stringify(data));
-    //         mui.alert("暂无报价！");
-    //     }
-    // });
+
 
     // mui.ajax("https://mobile.sxwinstar.net/ccb-api/api/v1/cbc/valuations", {
     //     data: {
