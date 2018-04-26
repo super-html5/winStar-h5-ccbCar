@@ -1,5 +1,6 @@
 var obj = JSON.parse(getQueryString("obj"));
 var objText = JSON.parse(getQueryString("objText"));
+var isUserType = getQueryString('isUserType');
 console.log(obj);
 console.log(objText);
 var isShow = false;
