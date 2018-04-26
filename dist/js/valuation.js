@@ -135,7 +135,7 @@ function carDetalis() {
     //     + '&accountId=' + '0cd3a6a461c94caf99c466eabbedfbc8' + '&isUserType=' + isUserType;
     var _u = '/ccb-api/api/v1/cbc/valuations/getVehicleInfo?plateNumber=' + plateNumber
         + '&plateNumberType=02'
-        + '&accountId=' + localStorage.getItem('ccbToken') + '&isUserType=' + isUserType;
+        + '&accountId=' + localStorage.getItem('ccbToken');
     mui.ajax(_u, {
         dataType: 'json',
         type: 'get',
