@@ -4,7 +4,10 @@ var isUserType = getQueryString('isUserType');
 
 console.log(obj);
 console.log(objText);
-
+if (localStorage.getItem('carIsSub') == 1) {
+    document.getElementById('SellCard').innerHTML = '信息已提交';
+    document.getElementById('SellCard').setAttribute('disabled', 'disabled');
+}
 var isShow = false;
 document.getElementById("date").innerHTML = objText.regDate;
 document.getElementById("kilometre").innerHTML = objText.mile;
@@ -190,6 +193,9 @@ function sell_car() {
         success: function (response) {
             alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
             $("#maskLayer").fadeOut(500);
+            localStorage.setItem('carIsSub', '1');
+            document.getElementById('SellCard').innerHTML = '信息已提交';
+            document.getElementById('SellCard').setAttribute('disabled', 'disabled');
         },
         error: function (data) {
             console.log(data);
