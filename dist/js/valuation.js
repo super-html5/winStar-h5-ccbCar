@@ -1,7 +1,7 @@
 ﻿linkage(mui, document, showCityPicker, cityResult, dataResult, showDataPicker);
-var plateNumber = getQueryString('plateNumber');
-// var isUserType = getQueryString('isUserType');
-var isUserType = 0;
+var plateNumber = _getQueryString('plateNumber');
+var isUserType = _getQueryString('isUserType');
+//var isUserType = 0;
 mui.ready(function () {
 
     var list = document.getElementById('brand-index-list');
@@ -174,9 +174,9 @@ function isSubmit() {
         },
         success: function (data) {
             if (data.result == 1 && isUserType == 1) {
-                // location.href = 'valuation_result.html?obj=' + escape(localStorage.getItem('car_obj')) + '&objText=' + escape(localStorage.getItem('car_objText'));
+                location.href = 'valuation_result.html?obj=' + escape(localStorage.getItem('car_obj')) + '&objText=' + escape(localStorage.getItem('car_objText'));
             } else if (data.result == 1 && isUserType == 0) {
-                // location.href = 'z_valuation_result.html?obj=' + escape(localStorage.getItem('car_obj')) + '&objText=' + escape(localStorage.getItem('car_objText'));
+                location.href = 'z_valuation_result.html?obj=' + escape(localStorage.getItem('car_obj')) + '&objText=' + escape(localStorage.getItem('car_objText'));
             }
         },
         error: function (data) {

@@ -86,7 +86,7 @@ mui.ajax(_u, {
         'Content-Type': 'application/json'
     },
     success: function (data) {
-        document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winStar-h5-ccbCar/template/f_valuation_result.html?objCar='
+        document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objCar='
             + escape(JSON.stringify(data)) + '&obj=' + escape(JSON.stringify(obj)) + '&objText=' + escape(JSON.stringify(objText));
         var years = [];
         var prices = [];

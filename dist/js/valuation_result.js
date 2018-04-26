@@ -2,6 +2,10 @@ var obj = JSON.parse(getQueryString("obj"));
 var objText = JSON.parse(getQueryString("objText"));
 var isUserType = getQueryString('isUserType');
 
+if (localStorage.getItem('carIsSub') == 1) {
+    document.getElementById('SellCard').innerHTML = '信息已提交';
+    document.getElementById('SellCard').setAttribute('disabled', 'disabled');
+}
 console.log(obj);
 console.log(objText);
 
@@ -113,7 +117,7 @@ mui.ajax(_u, {
         'Content-Type': 'application/json'
     },
     success: function (data) {
-        document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winStar-h5-ccbCar/template/f_valuation_result.html?objCar='
+        document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objCar='
             + escape(JSON.stringify(data)) + '&obj=' + escape(JSON.stringify(obj)) + '&objText=' + escape(JSON.stringify(objText));
         var years = [];
         var prices = [];
@@ -309,6 +313,10 @@ function sell_car() {
         success: function (response) {
             alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
             $("#maskLayer").fadeOut(500);
+            localStorage.setItem('carIsSub', '1');
+            document.getElementById('SellCard').innerHTML = '信息已提交';
+            document.getElementById('SellCard').setAttribute('disabled', 'disabled');
+
         },
         error: function (data) {
             console.log(data);
@@ -317,7 +325,8 @@ function sell_car() {
 }
 
 function zzcShow() {
-    document.getElementById('zzc').style.display = 'block';}
+    document.getElementById('zzc').style.display = 'block';
+}
 
 function zzcHidden() {
     document.getElementById('zzc').style.display = 'none';
