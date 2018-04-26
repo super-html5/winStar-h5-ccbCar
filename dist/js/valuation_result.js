@@ -300,7 +300,8 @@ function sell_car() {
             plateNumber: objText.plateNumber,
             price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
             saleTime: $('#saleTime').val(),
-            accountId: '0cd3a6a461c94caf99c466eabbedfbc8'
+            // accountId: '0cd3a6a461c94caf99c466eabbedfbc8'
+            accountId: localStorage.getItem('ccbToken')
         }),
         beforeSend: function (res) {
             res.setRequestHeader('Content-Type', 'application/json');

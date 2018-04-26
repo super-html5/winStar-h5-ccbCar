@@ -100,7 +100,11 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
                 },
                 dataType: 'json',
                 type: 'post',
-                headers: {'Content-Type': 'application/json', 'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
+                    'token_id': localStorage.getItem('ccbToken')
+                },
                 success: function (data) {
                     if (isUserType == 1) {
                         location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data)) + '&objText=' + escape(JSON.stringify(objText));
@@ -126,9 +130,12 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
 
 
 function carDetalis() {
-    var _u = '/ccb-api/api/v1/cbc/valuations/getVehicleInfo?plateNumber=' + '陕A3UW53'
+    // var _u = '/ccb-api/api/v1/cbc/valuations/getVehicleInfo?plateNumber=' + '陕A3UW53'
+    //     + '&plateNumberType=02'
+    //     + '&accountId=' + '0cd3a6a461c94caf99c466eabbedfbc8' + '&isUserType=' + isUserType;
+    var _u = '/ccb-api/api/v1/cbc/valuations/getVehicleInfo?plateNumber=' + plateNumber
         + '&plateNumberType=02'
-        + '&accountId=' + '0cd3a6a461c94caf99c466eabbedfbc8' + '&isUserType=' + isUserType;
+        + '&accountId=' + localStorage.getItem('ccbToken') + '&isUserType=' + isUserType;
     mui.ajax(_u, {
         dataType: 'json',
         type: 'get',
@@ -156,12 +163,14 @@ function carDetalis() {
 isSubmit();
 
 function isSubmit() {
-    var _u = '/ccb-api/api/v1/cbc/valuations/isSaleVehicle?accountId=' + '0cd3a6a461c94caf99c466eabbedfbc8';
+    // var _u = '/ccb-api/api/v1/cbc/valuations/isSaleVehicle?accountId=' + '0cd3a6a461c94caf99c466eabbedfbc8';
+    var _u = '/ccb-api/api/v1/cbc/valuations/isSaleVehicle?accountId=' + localStorage.getItem('ccbToken');
     mui.ajax(_u, {
         dataType: 'json',
         type: 'get',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'token_id': localStorage.getItem('ccbToken')
         },
         success: function (data) {
             if (data.result == 1 && isUserType == 1) {
