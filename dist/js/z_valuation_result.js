@@ -4,6 +4,10 @@ var isUserType = getQueryString('isUserType');
 
 console.log(obj);
 console.log(objText);
+
+
+document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objText=' + getQueryString("objText");
+
 if (localStorage.getItem('carIsSub') == 1) {
     document.getElementById('SellCard').innerHTML = '信息已提交';
     document.getElementById('SellCard').setAttribute('disabled', 'disabled');
@@ -89,8 +93,6 @@ mui.ajax(_u, {
         'Content-Type': 'application/json'
     },
     success: function (data) {
-        document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objCar='
-            + escape(JSON.stringify(data)) + '&obj=' + escape(JSON.stringify(obj)) + '&objText=' + escape(JSON.stringify(objText));
         var years = [];
         var prices = [];
         for (var item in data.residual_rate) {
@@ -196,6 +198,7 @@ function sell_car() {
             localStorage.setItem('carIsSub', '1');
             document.getElementById('SellCard').innerHTML = '信息已提交';
             document.getElementById('SellCard').setAttribute('disabled', 'disabled');
+            location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=ccbTwo';
         },
         error: function (data) {
             console.log(data);

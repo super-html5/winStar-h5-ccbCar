@@ -6,8 +6,8 @@ if (localStorage.getItem('carIsSub') == 1) {
     document.getElementById('SellCard').innerHTML = '信息已提交';
     document.getElementById('SellCard').setAttribute('disabled', 'disabled');
 }
-console.log(obj);
-console.log(objText);
+
+document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objText=' + getQueryString("objText");
 
 var isShow = false;
 document.getElementById("date").innerHTML = objText.regDate;
@@ -316,7 +316,7 @@ function sell_car() {
             localStorage.setItem('carIsSub', '1');
             document.getElementById('SellCard').innerHTML = '信息已提交';
             document.getElementById('SellCard').setAttribute('disabled', 'disabled');
-
+            location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=ccbTwo';
         },
         error: function (data) {
             console.log(data);
