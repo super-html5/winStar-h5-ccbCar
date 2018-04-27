@@ -82,7 +82,6 @@ $(document).ready(function () {
                     },
                     success: function (res) {
                         //alert('分享成功！');
-                        toShareBack();
                     },
                     cancel: function (res) {
                         //alert('已取消');
@@ -104,7 +103,6 @@ $(document).ready(function () {
                     },
                     success: function (res) {
                         //alert('分享成功！');
-                        toShareBack();
                     },
                     cancel: function (res) {
                         //alert('已取消');

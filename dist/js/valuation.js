@@ -107,20 +107,19 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
                 },
                 success: function (data) {
                     if (isUserType == 1) {
-                        location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data)) + '&objText=' + escape(JSON.stringify(objText));
+                        location.href = 'valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
                     } else {
-                        location.href = 'z_valuation_result.html?obj=' + escape(JSON.stringify(_data)) + '&objText=' + escape(JSON.stringify(objText));
+                        location.href = 'z_valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
                     }
                 },
                 error: function (data) {
                     if (isUserType == 1) {
-                        location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(_data)) + '&objText=' + escape(JSON.stringify(objText));
+                        location.href = 'valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
                     } else {
-                        location.href = 'z_valuation_result.html?obj=' + escape(JSON.stringify(_data)) + '&objText=' + escape(JSON.stringify(objText));
+                        location.href = 'z_valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
                     }
                 }
             });
-            // location.href = 'valuation_result.html?obj=' + escape(JSON.stringify(data)) + '&objText=' + escape(JSON.stringify(objText));
         },
         error: function (data) {
             mui.alert("暂无报价！");
@@ -174,9 +173,9 @@ function isSubmit() {
         },
         success: function (data) {
             if (data.result == 1 && isUserType == 1) {
-                location.href = 'valuation_result.html?obj=' + escape(localStorage.getItem('car_obj')) + '&objText=' + escape(localStorage.getItem('car_objText'));
+                location.href = 'valuation_result.html?obj=' + encodeURIComponent(localStorage.getItem('car_obj')) + '&objText=' + encodeURIComponent(localStorage.getItem('car_objText'));
             } else if (data.result == 1 && isUserType == 0) {
-                location.href = 'z_valuation_result.html?obj=' + escape(localStorage.getItem('car_obj')) + '&objText=' + escape(localStorage.getItem('car_objText'));
+                location.href = 'z_valuation_result.html?obj=' + encodeURIComponent(localStorage.getItem('car_obj')) + '&objText=' + encodeURIComponent(localStorage.getItem('car_objText'));
             }
         },
         error: function (data) {

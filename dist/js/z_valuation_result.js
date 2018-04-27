@@ -1,12 +1,12 @@
-var obj = JSON.parse(getQueryString("obj"));
-var objText = JSON.parse(getQueryString("objText"));
-var isUserType = getQueryString('isUserType');
+var obj = JSON.parse(_getQueryString("obj"));
+var objText = JSON.parse(_getQueryString("objText"));
+var isUserType = _getQueryString('isUserType');
 
 console.log(obj);
 console.log(objText);
 
 
-document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objText=' + getQueryString("objText");
+document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objText=' + encodeURIComponent(JSON.stringify(objText));
 
 if (localStorage.getItem('carIsSub') == 1) {
     document.getElementById('SellCard').innerHTML = '信息已提交';

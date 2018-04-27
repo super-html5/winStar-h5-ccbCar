@@ -1,13 +1,13 @@
-var obj = JSON.parse(getQueryString("obj"));
-var objText = JSON.parse(getQueryString("objText"));
-var isUserType = getQueryString('isUserType');
+var obj = JSON.parse(_getQueryString("obj"));
+var objText = JSON.parse(_getQueryString("objText"));
+var isUserType = _getQueryString('isUserType');
 
 if (localStorage.getItem('carIsSub') == 1) {
     document.getElementById('SellCard').innerHTML = '信息已提交';
     document.getElementById('SellCard').setAttribute('disabled', 'disabled');
 }
 
-document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objText=' + getQueryString("objText");
+document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objText=' + encodeURIComponent(JSON.stringify(objText));
 
 var isShow = false;
 document.getElementById("date").innerHTML = objText.regDate;
@@ -117,8 +117,6 @@ mui.ajax(_u, {
         'Content-Type': 'application/json'
     },
     success: function (data) {
-        document.getElementById('fxUrl').value = 'https://mobile.sxwinstar.net/ccb/winstar-h5-ccbCar/template/f_valuation_result.html?objCar='
-            + escape(JSON.stringify(data)) + '&obj=' + escape(JSON.stringify(obj)) + '&objText=' + escape(JSON.stringify(objText));
         var years = [];
         var prices = [];
         for (var item in data.residual_rate) {
