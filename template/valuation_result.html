@@ -326,12 +326,13 @@
                     <li class="mui-table-view-cell"><span class="black4">车辆所在地</span><span
                             class="mui-badge clearBg font-size16"
                             id="_location">西安</span></li>
-                    <li class="mui-table-view-cell"><span class="black4">上年度累计违法数量（个）</span><span
+                    <li style="display: none" class="mui-table-view-cell"><span class="black4">上年度累计违法数量（个）</span><span
                             class="mui-badge clearBg font-size16"
                             id="illegalNumber">10</span>
                     </li>
-                    <li class="mui-table-view-cell"><span class="black4">上年度累计罚款记分（分）</span><span
-                            class="mui-badge clearBg font-size16" id="integral">9</span></li>
+                    <li style="display: none" class="mui-table-view-cell"><span class="black4">上年度累计罚款记分（分）</span><span
+                            class="mui-badge clearBg font-size16" id="integral">9</span>
+                    </li>
                 </ul>
                 <div class="mui-row padding-left25 padding-right25 padding-top20 padding-bottom20 font-size14"
                      style="background-image: url('../dist/images/assessmentBg.png')" id="carCreditDetails">
@@ -340,19 +341,21 @@
                         <img src="../dist/images/carAnalysisTitle.png" style="width: 34%;"/>
                     </div>
                     <div class="mui-col-xs-12" style="background-color: rgb(246,246,246);padding: 10px">
-                        <div class="mui-col-xs-12">
+                        <div class="mui-col-xs-12" id="c0">
                             机动车状态为<span id="vehicleStatus_text"></span>状态的<span id="vehicleType_text"></span>车辆
                         </div>
-                        <!--<div class="mui-col-xs-12">-->
-                        <!--该车整车很新，是一辆准新车，汽车状态基本和新车无异，汽车还在原厂保质范围之内，有很高的性价比。-->
-                        <!--</div>-->
-                        <div class="mui-col-xs-12">
-                            该车处在一个青壮年时期，是一辆车最好开的阶段，车辆性能及操控表现较好。
-                            初登日期三年到六年间：该车处在车辆成熟期，保值率较高阶段，出手换车的最佳时机。
+                        <div class="mui-col-xs-12" id="c1" style="display: none">
+                        该车整车很新，是一辆准新车，汽车状态基本和新车无异，汽车还在原厂保质范围之内，有很高的性价比。
                         </div>
-                        <!--<div class="mui-col-xs-12">-->
-                        <!--该车处在车辆中后期，车辆每年需要年审，排放标准较低。-->
-                        <!--</div>-->
+                        <div class="mui-col-xs-12" id="c2" style="display: none">
+                            该车处在一个青壮年时期，是一辆车最好开的阶段，车辆性能及操控表现较好。
+                        </div>
+                        <div class="mui-col-xs-12" id="c3" style="display: none">
+                            该车处在车辆成熟期，保值率较高阶段，出手换车的最佳时机。
+                        </div>
+                        <div class="mui-col-xs-12" id="c4" style="display: none">
+                        该车处在车辆中后期，车辆每年需要年审，排放标准较低。
+                        </div>
                         <div class="mui-col-xs-12">在同级车中，无论是售价还是配置，都算是性价比较高的一款车。</div>
                         <div class="mui-col-xs-12">
                             <span id="creditStatus"></span>

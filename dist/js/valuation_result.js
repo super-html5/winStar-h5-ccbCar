@@ -206,32 +206,57 @@ function getCarDetails() {
             showSearchCar.style.display = 'none';
             carDetailsInfo.style.display = 'block';
             isShow = true;
+
+
+            var checkTimeStr = new Date(data.checkTime);
+            var registerTimeStr = new Date(data.registerTime);
+            var strongInsuranceTimeStr = new Date(data.strongInsuranceTime);
+
             // carType.innerHTML = objText.modelIdText;
             data.brand ? (brand.innerHTML = data.brand ) : (brand.innerHTML = '- -');
-            data.checkTime ? (checkTime.innerHTML = data.checkTime ) : (checkTime.innerHTML = '- -');
+            data.checkTime ? (checkTime.innerHTML = formatDate(checkTimeStr) ) : (checkTime.innerHTML = '- -');
             // data.displacement ? (displacement.innerHTML = data.displacement ) : (displacement.innerHTML = '- -');
             data.environmental ? (environmental.innerHTML = data.environmental ) : (environmental.innerHTML = '- -');
             data.illegalNumber ? (illegalNumber.innerHTML = data.illegalNumber ) : (illegalNumber.innerHTML = '- -');
             data.integral ? (integral.innerHTML = data.integral ) : (integral.innerHTML = '- -');
             data.isChina ? (isChina.innerHTML = data.isChina ) : (isChina.innerHTML = '- -');
             data.isTransfer ? (isTransfer.innerHTML = data.isTransfer ) : (isTransfer.innerHTML = '- -');
-            data.location ? (_location.innerHTML = data.location ) : (_location.innerHTML = '- -');
+            data.location ? (_location.innerHTML = data.location ) : (_location.innerHTML = objText.zoneText);
             data.mortgageStatus ? (mortgageStatus.innerHTML = data.mortgageStatus ) : (mortgageStatus.innerHTML = '- -');
             data.power ? (power.innerHTML = data.displacement + ' / ' + data.power + 'kw') : (power.innerHTML = '- - / - -');
             data.productionTime ? (productionTime.innerHTML = data.productionTime ) : (productionTime.innerHTML = '- -');
-            data.registerTime ? (registerTime.innerHTML = data.registerTime ) : (registerTime.innerHTML = '- -');
-            data.strongInsuranceTime ? (strongInsuranceTime.innerHTML = data.strongInsuranceTime ) : (strongInsuranceTime.innerHTML = '- -');
-            data.vehicleStatus ? (vehicleStatus.innerHTML = data.vehicleStatus ) : (vehicleStatus.innerHTML = '- -');
-            data.vehicleType ? (vehicleType.innerHTML = data.vehicleType ) : (vehicleType.innerHTML = '- -');
+            data.registerTime ? (registerTime.innerHTML = formatDate(registerTimeStr) ) : (registerTime.innerHTML = '- -');
+            data.strongInsuranceTime ? (strongInsuranceTime.innerHTML = formatDate(strongInsuranceTimeStr) ) : (strongInsuranceTime.innerHTML = '- -');
+            data.vehicleStatus ? (vehicleStatus.innerHTML = data.vehicleStatus ) : (vehicleStatus.innerHTML = '正常');
+
+            if (objText.modelIdText.length >= 16) {
+                objText.modelIdText = objText.modelIdText.substring(0, 16) + '...';
+            }
+
+            data.vehicleType ? (vehicleType.innerHTML = data.vehicleType ) : (vehicleType.innerHTML = objText.modelIdText);
 
             data.vehicleStatus ? (vehicleStatus_text.innerHTML = data.vehicleStatus ) : (vehicleStatus_text.innerHTML = ' -- ');
             data.vehicleType ? (vehicleType_text.innerHTML = data.vehicleType ) : (vehicleType_text.innerHTML = ' -- ');
 
+            if (!data.vehicleStatus || !data.vehicleType) {
+                document.getElementById('c0').style.display = 'none';
+            }
             if (!data.vehicleStatus) {
-                document.getElementById('carCreditDetails').style.display = 'none';
+                vehicleType_text.style.display = 'none';
+            }
+            var thisTime = new Date().getTime();
+            console.log(thisTime)
+            if (thisTime - data.registerTime <= 31536000000) {
+                document.getElementById('c1').style.display = 'block';
+            } else if (thisTime - data.registerTime > 31536000000 && thisTime - data.registerTime < 31536000000 * 3) {
+                document.getElementById('c2').style.display = 'block';
+            } else if (thisTime - data.registerTime > 31536000000 * 3 && thisTime - data.registerTime < 31536000000 * 6) {
+                document.getElementById('c3').style.display = 'block';
+            } else if (thisTime - data.registerTime > 31536000000 * 6) {
+                document.getElementById('c4').style.display = 'block';
             }
             if (!data.illegalNumber) {
-                document.getElementById('creditStatus').innerHTML = ' -- ';
+                document.getElementById('creditStatus').innerHTML = '';
             } else {
                 if (data.illegalNumber < 3) {
                     document.getElementById('creditStatus').innerHTML = '车辆驾驶习惯：优秀';
@@ -329,3 +354,25 @@ function zzcShow() {
 function zzcHidden() {
     document.getElementById('zzc').style.display = 'none';
 }
+
+// 第三种方式：函数处理
+function formatDate(now) {
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var date = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+    if (month < 10) {
+        month = '0' + month;
+    }
+    if (date < 10) {
+        date = '0' + date;
+    }
+    return year + "-" + month + "-" + date;
+}
+
+// var d = new Date(1553788800000);
+//
+// console.log(formatDate(d));
