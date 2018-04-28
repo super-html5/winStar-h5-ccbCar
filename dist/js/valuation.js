@@ -96,7 +96,7 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
                     regDate: regDate,
                     mile: mile,
                     plateNumber: plateNumber,
-                    price: data.highPrice * 10000
+                    price: parseInt(data.model_price) * 10000
                 },
                 dataType: 'json',
                 type: 'post',
