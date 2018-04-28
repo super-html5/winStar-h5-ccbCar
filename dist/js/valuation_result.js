@@ -1,7 +1,16 @@
 var obj = JSON.parse(_getQueryString("obj"));
 var objText = JSON.parse(_getQueryString("objText"));
 var isUserType = _getQueryString('isUserType');
-
+var isChinaT = new Array();
+isChinaT['A'] = '国产';
+isChinaT['B'] = '海关进口';
+isChinaT['C'] = '公安没收';
+isChinaT['D'] = '工商没收';
+isChinaT['E'] = '海关没收';
+isChinaT['F'] = '一车一证';
+isChinaT['G'] = '海关监管';
+isChinaT['H'] = '进口改装';
+isChinaT['I'] = '解除监管';
 if (localStorage.getItem('carIsSub') == 1) {
     document.getElementById('SellCard').innerHTML = '信息已提交';
     document.getElementById('SellCard').setAttribute('disabled', 'disabled');
@@ -219,7 +228,10 @@ function getCarDetails() {
             data.environmental ? (environmental.innerHTML = data.environmental ) : (environmental.innerHTML = '- -');
             data.illegalNumber ? (illegalNumber.innerHTML = data.illegalNumber ) : (illegalNumber.innerHTML = '- -');
             data.integral ? (integral.innerHTML = data.integral ) : (integral.innerHTML = '- -');
-            data.isChina ? (isChina.innerHTML = data.isChina ) : (isChina.innerHTML = '- -');
+            if (!isChinaT[data.isChina]) {
+                isChinaT[data.isChina] = '其他';
+            }
+            data.isChina ? (isChina.innerHTML = isChinaT[data.isChina] ) : (isChina.innerHTML = '- -');
             data.isTransfer ? (isTransfer.innerHTML = data.isTransfer ) : (isTransfer.innerHTML = '- -');
             data.location ? (_location.innerHTML = data.location ) : (_location.innerHTML = objText.zoneText);
             data.mortgageStatus ? (mortgageStatus.innerHTML = data.mortgageStatus ) : (mortgageStatus.innerHTML = '- -');
