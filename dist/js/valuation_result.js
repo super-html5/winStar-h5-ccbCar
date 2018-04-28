@@ -356,6 +356,7 @@ function sell_car() {
         },
         error: function (data) {
             console.log(data);
+            alert('信息有误，请重新提交');
         }
     });
 }
