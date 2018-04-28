@@ -15,6 +15,8 @@ function linkage($,doc,showCityPicker,cityResult,dataResult,showDataPicker) {
     data[0].addEventListener('tap', function() {
         var optionsJson = this.getAttribute('data-options') || '{}';
         var options = JSON.parse(optionsJson);
+
+        console.log(options);
         /*
          * 首次显示时实例化组件
          * 示例为了简洁，将 options 放在了按钮的 dom 上

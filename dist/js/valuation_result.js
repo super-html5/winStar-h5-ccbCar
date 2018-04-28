@@ -257,15 +257,16 @@ function getCarDetails() {
                 vehicleType_text.style.display = 'none';
             }
             var thisTime = new Date().getTime();
-            console.log(thisTime)
-            if (thisTime - data.registerTime <= 31536000000) {
-                document.getElementById('c1').style.display = 'block';
-            } else if (thisTime - data.registerTime > 31536000000 && thisTime - data.registerTime < 31536000000 * 3) {
-                document.getElementById('c2').style.display = 'block';
-            } else if (thisTime - data.registerTime > 31536000000 * 3 && thisTime - data.registerTime < 31536000000 * 6) {
-                document.getElementById('c3').style.display = 'block';
-            } else if (thisTime - data.registerTime > 31536000000 * 6) {
-                document.getElementById('c4').style.display = 'block';
+            if (data.registerTime) {
+                if (thisTime - data.registerTime <= 31536000000) {
+                    document.getElementById('c1').style.display = 'block';
+                } else if (thisTime - data.registerTime > 31536000000 && thisTime - data.registerTime < 31536000000 * 3) {
+                    document.getElementById('c2').style.display = 'block';
+                } else if (thisTime - data.registerTime > 31536000000 * 3 && thisTime - data.registerTime < 31536000000 * 6) {
+                    document.getElementById('c3').style.display = 'block';
+                } else if (thisTime - data.registerTime > 31536000000 * 6) {
+                    document.getElementById('c4').style.display = 'block';
+                }
             }
             if (!data.illegalNumber) {
                 document.getElementById('creditStatus').innerHTML = '';
