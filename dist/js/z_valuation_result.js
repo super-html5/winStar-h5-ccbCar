@@ -100,11 +100,11 @@ mui.ajax(_u, {
             prices.push(data.residual_rate[item].price)
         }
         option = {
-            title: {
-                subtext: '单位(万元)',
-                x: 'left',
-                align: 'right'
-            },
+            // title: {
+            //     subtext: '单位(万元)',
+            //     x: 'left',
+            //     align: 'right'
+            // },
             xAxis: {
                 type: 'category',
                 boundaryGap: true,
@@ -112,18 +112,18 @@ mui.ajax(_u, {
             },
             yAxis: {
                 type: 'value',
-                name: '单位：万元',
-                show: false
+                name: '单位：万元'
             },
             series: [{
+                areaStyle: {},
                 data: prices,
                 type: 'line',
                 itemStyle: {
                     normal: {
                         label: {show: true}, lineStyle: {
-                            color: '#999'
+                            color: '#47cc74'
                         },
-                        color: '#999'
+                        color: '#47cc74'
                     }
                 },
             }]
@@ -186,24 +186,28 @@ function sell_car() {
             plateNumber: objText.plateNumber,
             price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
             saleTime: $('#saleTime').val(),
-            // accountId: '0cd3a6a461c94caf99c466eabbedfbc8'
+            model: objText.modelIdText,
             accountId: localStorage.getItem('ccbToken')
         }),
         beforeSend: function (res) {
             res.setRequestHeader('Content-Type', 'application/json');
-        },
+        }
+        ,
         success: function (response) {
             alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
             $("#maskLayer").fadeOut(500);
             localStorage.setItem('carIsSub', '1');
             document.getElementById('SellCard').innerHTML = '信息已提交';
             document.getElementById('SellCard').setAttribute('disabled', 'disabled');
-            location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=ccbTwo';
-        },
+            // location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=ccbTwo';
+            location.href = 'success.html';
+        }
+        ,
         error: function (data) {
             console.log(data);
         }
-    });
+    })
+    ;
 }
 
 function zzcShow() {

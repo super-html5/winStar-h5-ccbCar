@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>提交成功</title>
+    <style>
+        .imgs {
+            padding-top: 25%;
+            width: 50%;
+        }
+        button{
+            background-color: rgb(51,132,254);
+            color: #FFFFFF;
+            padding: 15px 50px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 100%; text-align: center">
+    <img class="imgs" src="../dist/images/success.png"/>
+
+    <h2 style="color: rgb(238,71,48)">恭喜您提交成功</h2>
+    <p>稍后我们的评估师会尽快与您联系<br>请保持电话畅通</p>
+
+    <button id="bt">返回手心行动</button>
+</div>
+<script>
+    document.getElementById('bt').onclick = function () {
+        location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=ccbTwo';
+    }
+</script>
+</body>
+</html>
