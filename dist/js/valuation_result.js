@@ -133,11 +133,11 @@ mui.ajax(_u, {
             prices.push(data.residual_rate[item].price)
         }
         option = {
-            // title: {
-            //     subtext: '单位(万元)',
-            //     x: 'left',
-            //     align: 'right'
-            // },
+            title: {
+                subtext: '单位(万元)',
+                x: 'left',
+                align: 'right'
+            },
             xAxis: {
                 type: 'category',
                 boundaryGap: true,
@@ -145,7 +145,7 @@ mui.ajax(_u, {
             },
             yAxis: {
                 type: 'value',
-                name: '单位：万元'
+                // name: '单位：万元'
             },
             series: [{
                 areaStyle: {},
@@ -347,7 +347,7 @@ function sell_car() {
             res.setRequestHeader('Content-Type', 'application/json');
         },
         success: function (response) {
-            alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
+            // alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
             $("#maskLayer").fadeOut(500);
             localStorage.setItem('carIsSub', '1');
             document.getElementById('SellCard').innerHTML = '信息已提交';
