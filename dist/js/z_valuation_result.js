@@ -137,6 +137,7 @@ mui.ajax(_u, {
 });
 
 $('#SellCard').click(function () {
+    slog('点击出售爱车', 17);
     $("#maskLayer").fadeIn(500);
     var centerHeight = $("#popupQuery").height() / 2;
     $("#popupQuery").css("margin-top", -centerHeight + "px");
@@ -158,6 +159,7 @@ $("#clearCard").on("click", function () {
 });
 
 function sell_car() {
+    slog('提交预售信息', 18);
     if (!$('#price').val()) {
         alert('请输入出售价格');
         return;
@@ -216,4 +218,30 @@ function zzcShow() {
 
 function zzcHidden() {
     document.getElementById('zzc').style.display = 'none';
+}
+
+function slog(applyUrl, code) {
+    /**
+     * 出售车辆
+     */
+    var su = '/ccb-api/api/v1/cbc/couponActivities/queryLog';
+    $.ajax({
+        url: su,
+        type: 'post',
+        dataType: "json",
+        data: JSON.stringify({
+            applyUrl: applyUrl,
+            code: code
+        }),
+        headers: {'Content-Type': 'application/json', 'token_id': localStorage.getItem('ccbToken')},
+        beforeSend: function (res) {
+            res.setRequestHeader('token_id', localStorage.getItem('ccbToken'));
+        },
+        success: function (response) {
+
+        },
+        error: function (data) {
+
+        }
+    });
 }

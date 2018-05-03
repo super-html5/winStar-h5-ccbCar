@@ -33,7 +33,7 @@ function rZoneNumber(str) {
 }
 
 mui("#canvasContent").on('tap', '.bg-yellow', function () {
-
+    slog('提交表单', 16)
     var zone = document.getElementById("cityResult").getAttribute("data-value");
     var zoneText = document.getElementById("cityResult").innerHTML;
     if (!zone) {
@@ -96,7 +96,7 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
                     regDate: regDate,
                     mile: mile,
                     plateNumber: plateNumber,
-                    price: parseInt(_data.model_price) * 10000
+                    price: parseInt(_data.eval_prices[0].dealer_low_sold_price) * 10000
                 },
                 dataType: 'json',
                 type: 'post',
@@ -202,3 +202,23 @@ function formatDate(now) {
 // var d = new Date(1553788800000);
 //
 // console.log(formatDate(d));
+function slog(applyUrl, code) {
+    mui.ajax('/ccb-api/api/v1/cbc/couponActivities/queryLog', {
+        data: {
+            applyUrl: applyUrl,
+            code: code
+        },
+        dataType: 'json',
+        type: 'post',
+        headers: {'Content-Type': 'application/json', 'token_id': localStorage.getItem('ccbToken')},
+        beforeSend: function (res) {
+            res.setRequestHeader('token_id', localStorage.getItem('ccbToken'));
+        },
+        success: function (data) {
+
+        },
+        error: function (data) {
+
+        }
+    });
+}

@@ -2,6 +2,7 @@ var obj = JSON.parse(_getQueryString("obj"));
 var objText = JSON.parse(_getQueryString("objText"));
 var isUserType = _getQueryString('isUserType');
 var isChinaT = new Array();
+
 isChinaT['A'] = '国产';
 isChinaT['B'] = '海关进口';
 isChinaT['C'] = '公安没收';
@@ -291,6 +292,7 @@ function getCarDetails() {
 }
 
 $('#SellCard').click(function () {
+    slog('点击出售爱车', 17);
     $("#maskLayer").fadeIn(500);
     var centerHeight = $("#popupQuery").height() / 2;
     $("#popupQuery").css("margin-top", -centerHeight + "px");
@@ -312,6 +314,7 @@ $("#clearCard").on("click", function () {
 });
 
 function sell_car() {
+    slog('提交预售信息', 18);
     if (!$('#price').val()) {
         alert('请输入出售价格');
         return;
@@ -391,3 +394,29 @@ function formatDate(now) {
 // var d = new Date(1553788800000);
 //
 // console.log(formatDate(d));
+
+function slog(applyUrl, code) {
+    /**
+     * 出售车辆
+     */
+    var su = '/ccb-api/api/v1/cbc/couponActivities/queryLog';
+    $.ajax({
+        url: su,
+        type: 'post',
+        dataType: "json",
+        data: JSON.stringify({
+            applyUrl: applyUrl,
+            code: code
+        }),
+        headers: {'Content-Type': 'application/json', 'token_id': localStorage.getItem('ccbToken')},
+        beforeSend: function (res) {
+            res.setRequestHeader('token_id', localStorage.getItem('ccbToken'));
+        },
+        success: function (response) {
+
+        },
+        error: function (data) {
+
+        }
+    });
+}
