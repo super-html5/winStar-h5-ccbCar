@@ -89,37 +89,11 @@ mui("#canvasContent").on('tap', '.bg-yellow', function () {
             var _data = data;
             localStorage.setItem('car_obj', JSON.stringify(_data));
             localStorage.setItem('car_objText', JSON.stringify(objText));
-            mui.ajax("/ccb-api/api/v1/cbc/valuations", {
-                data: {
-                    modelId: modelId,
-                    zone: zone,
-                    regDate: regDate,
-                    mile: mile,
-                    plateNumber: plateNumber,
-                    price: parseInt(_data.eval_prices[0].dealer_low_sold_price) * 10000
-                },
-                dataType: 'json',
-                type: 'post',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // 'token_id': '0cd3a6a461c94caf99c466eabbedfbc8'
-                    'token_id': localStorage.getItem('ccbToken')
-                },
-                success: function (data) {
-                    if (isUserType == 1) {
-                        location.href = 'valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
-                    } else {
-                        location.href = 'z_valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
-                    }
-                },
-                error: function (data) {
-                    if (isUserType == 1) {
-                        location.href = 'valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
-                    } else {
-                        location.href = 'z_valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
-                    }
-                }
-            });
+            if (isUserType == 1) {
+                location.href = 'valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
+            } else {
+                location.href = 'z_valuation_result.html?obj=' + encodeURIComponent(JSON.stringify(_data)) + '&objText=' + encodeURIComponent(JSON.stringify(objText));
+            }
         },
         error: function (data) {
             mui.alert("暂无报价！");

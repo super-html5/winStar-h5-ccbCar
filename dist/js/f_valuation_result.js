@@ -122,18 +122,18 @@ mui.ajax(_u, {
             },
             yAxis: {
                 type: 'value',
-                name: '单位：万元',
-                show: false
+                // name: '单位：万元'
             },
             series: [{
+                areaStyle: {},
                 data: prices,
                 type: 'line',
                 itemStyle: {
                     normal: {
                         label: {show: true}, lineStyle: {
-                            color: '#999'
+                            color: '#47cc74'
                         },
-                        color: '#999'
+                        color: '#47cc74'
                     }
                 },
             }]

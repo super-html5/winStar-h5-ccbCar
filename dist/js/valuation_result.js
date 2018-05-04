@@ -236,7 +236,7 @@ function getCarDetails() {
             data.isTransfer ? (isTransfer.innerHTML = data.isTransfer ) : (isTransfer.innerHTML = '- -');
             data.location ? (_location.innerHTML = data.location ) : (_location.innerHTML = objText.zoneText);
             data.mortgageStatus ? (mortgageStatus.innerHTML = data.mortgageStatus ) : (mortgageStatus.innerHTML = '- -');
-            data.power ? (power.innerHTML = data.displacement + ' / ' + data.power + 'kw') : (power.innerHTML = '- - / - -');
+            data.power ? (power.innerHTML = data.displacement + 'L' + ' / ' + data.power + 'kw') : (power.innerHTML = '- - / - -');
             data.productionTime ? (productionTime.innerHTML = data.productionTime ) : (productionTime.innerHTML = '- -');
             data.registerTime ? (registerTime.innerHTML = formatDate(registerTimeStr) ) : (registerTime.innerHTML = '- -');
             data.strongInsuranceTime ? (strongInsuranceTime.innerHTML = formatDate(strongInsuranceTimeStr) ) : (strongInsuranceTime.innerHTML = '- -');
@@ -344,12 +344,18 @@ function sell_car() {
             price: parseInt(parseFloat($('#price').val()).toFixed(2) * 10000),
             saleTime: $('#saleTime').val(),
             accountId: localStorage.getItem('ccbToken'),
-            model: objText.modelIdText
+            model: objText.modelIdText,
+            mile: objText.mile,
+            registerTime: objText.regDate
         }),
         beforeSend: function (res) {
             res.setRequestHeader('Content-Type', 'application/json');
+            document.getElementById('mcar').innerHTML = '请稍后...';
+            document.getElementById('mcar').setAttribute('disabled', 'disabled');
         },
         success: function (response) {
+            document.getElementById('mcar').innerHTML = '提交';
+            document.getElementById('mcar').removeAttribute('disabled');
             // alert('恭喜您提交成功，我们会在24小时内与您联系，请保持电话畅通');
             $("#maskLayer").fadeOut(500);
             localStorage.setItem('carIsSub', '1');
@@ -359,6 +365,8 @@ function sell_car() {
             location.href = 'success.html';
         },
         error: function (data) {
+            document.getElementById('mcar').innerHTML = '提交';
+            document.getElementById('mcar').removeAttribute('disabled');
             console.log(data);
             alert('信息有误，请重新提交');
         }
